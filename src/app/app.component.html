@@ -1,39 +1,54 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{title}}!<i class="fa fa-bath"></i>
-  </h1>
-  <img width="300" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+
+
+<div class="container-fluid p-0 m-0 fixed-top">
+  <ul class="nav bg-dark text-white">
+    <li class="nav-item" data-menuanchor="menuAnchor1">
+      <a class="nav-link active" href="#menuAnchor1">First section</a>
+    </li>
+    <li class="nav-item" data-menuanchor="menuAnchor2">
+      <a class="nav-link" href="#menuAnchor2">Second section</a>
+    </li>
+    <li class="nav-item" data-menuanchor="menuAnchor3">
+      <a class="nav-link" href="#menuAnchor3">Third section</a>
+    </li>
+    <li class="nav-item" data-menuanchor="menuAnchor4">
+      <a class="nav-link" href="#menuAnchor4">Fourth section</a>
+    </li>
+  </ul>
 </div>
 
-<button class="btn btn-primary">Test Button</button>
+<div class="container-fluid p-0 m-0" mnFullpage [mnFullpage]="options">
 
-<button type="button" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Tooltip on top">
-  Tooltip on top
-</button>
+  <section class="section" data-anchor="menuAnchor1">
+    <div class="fp-tableCell container centered">
+      <h1>Angular X fullPage.js</h1>
+      <h4>Create Beautiful Fullscreen Scrolling Websites (now with Angular 2 and above)!</h4>
+      <img class="logo-image" src="https://raw.githubusercontent.com/meiblorn/ng2-fullpage/develop/logo.png">
+    </div>
+  </section>
 
-<!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        ...
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+  <section class="section" data-anchor="menuAnchor2">
+    <div class="fp-tableCell container">
+      <h1>Easy to install !</h1>
+      <div class="code-block">
+        sdfsdf
       </div>
     </div>
-  </div>
+  </section>
+
+  <section class="section" data-anchor="menuAnchor3">
+    <div class="fp-tableCell container">
+      <h1>Easy to install !</h1>
+      <div class="code-block">
+          <span class="counter">1,234,567</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" data-anchor="menuAnchor4">
+    <div class="fp-tableCell container">
+      <pre [innerHTML]="config"></pre>
+    </div>
+  </section>
+
 </div>
