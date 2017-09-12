@@ -88,7 +88,7 @@ export class AppComponent implements AfterViewInit {
     css3: true,
     onLeave: function(index, nextIndex, direction){
       if(index === 1){
-        $(".nav").addClass("bg-dark text-white")
+        $(".fixed-top").addClass("bg-dark text-white")
       }
     },
     afterLoad: function(anchorLink, index){
@@ -96,9 +96,9 @@ export class AppComponent implements AfterViewInit {
       console.log(anchorLink, index)
       
       if(index === 1){
-        $(".nav").removeClass("bg-dark text-white")
+        $(".fixed-top").removeClass("bg-dark text-white")
       } else {
-        $(".nav").addClass("bg-dark text-white")
+        $(".fixed-top").addClass("bg-dark text-white")
       }
       //using index
       if(index == 3){
