@@ -13,7 +13,7 @@ const appRoutes: Routes = [
     path: 'profile',     
     component: ProfileComponent,
     resolve: {
-      mails: ProjectResolver
+      profile: ProjectResolver
     }
   },
   { path: '**',       component: NoContentComponent },
