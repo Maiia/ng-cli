@@ -13,7 +13,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 // }
 
 export class ProjectResolver {
-  dataUrl: string = "http://api.citysdk.waag.org/layers/parking.garage/objects?per_page=50";
+  dataUrl: string = "https://api.citysdk.waag.org/layers/parking.garage/objects?per_page=50";
 
   constructor( public http: HttpClient ){}
 
