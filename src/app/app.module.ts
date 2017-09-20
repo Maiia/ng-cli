@@ -9,7 +9,7 @@ import { ROUTER_SETTINGS } from './app.routes';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Application modules
-import { FooterModule, HeaderModule } from './shared';
+import { FooterModule, HeaderModule, LoadingIndicatorModule } from './shared';
 
 // custom directives
 
@@ -26,7 +26,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { NoContentComponent } from './no-content';
-import { LoadingIndicatorComponent } from './shared';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 
@@ -34,7 +33,6 @@ import { HomeComponent } from './home/home.component';
   declarations: [ 
     AppComponent,
     NoContentComponent,
-    LoadingIndicatorComponent,
     ProfileComponent,
     HomeComponent
   ],
@@ -44,6 +42,10 @@ import { HomeComponent } from './home/home.component';
     FormsModule,
     ROUTER_SETTINGS,    
     NgbModule.forRoot(),
+
+    HeaderModule,
+    FooterModule,
+    LoadingIndicatorModule,
 
     // redux
     StoreModule.forRoot(rootReducer),

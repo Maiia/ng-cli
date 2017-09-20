@@ -9,10 +9,9 @@ import { Component, Input, OnInit } from '@angular/core';
 
 // Component controller
 export class HeaderComponent implements OnInit {
-
-  constructor() {
-    console.log('%cHeader component', 'background: green; color: white; display: block; padding: 2px 10px; font-size: 15px;'); 
-  }
+  isActive: Boolean = false;
+  
+  constructor() {}
 
   // -----------------------------------------
   // Component Lifecycle methods
