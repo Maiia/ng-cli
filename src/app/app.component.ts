@@ -1,11 +1,6 @@
 import { Component, AfterViewInit, HostListener, Inject, Input, OnInit } from '@angular/core';
-import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
-
-// redux
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs/Observable';
-import * as Counter from './store/actions';
-import { IAppState } from './store/initial-state';
+import { Title } from '@angular/platform-browser';
+import { VERSION } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -14,35 +9,49 @@ import { IAppState } from './store/initial-state';
 })
 
 export class AppComponent implements OnInit {
-  closeResult: string;
-  counter: Observable<any>;
+  infoLogStyle: string = 'color: orange; font-size: 12px;';
 
   constructor(
-    private modalService: NgbModal,
-    private store: Store<IAppState>
-  ){ }
+    private titleService: Title
+  ){
+    console.log('%cAngular version: ' + VERSION.full, this.infoLogStyle);
 
-  public ngOnInit() {
-    this.counter = this.store.select('counter');
+    this.titleService.setTitle('App Component!')
   }
 
-  open(content) {
-    this.modalService.open(content).result.then((result) => {
-      this.closeResult = `Closed with: ${result}`;
-    }, (reason) => {
-      this.closeResult = `Dismissed`;
-    });
+  // -----------------------------------------
+  // Component Lifecycle methods
+  // -----------------------------------------
+
+  ngOnInit() {
+    // console.log ("Called after the constructor, initializing input properties, and the first call to ngOnChanges");
   }
 
-  increment(){
-		this.store.dispatch(new Counter.Incremet(1));
-	}
+  ngOnChanges() {
+    // console.log ("Called after every change to input properties and before processing content or child views");
+  }
 
-	decrement(){
-		this.store.dispatch(new Counter.Decrement(1));
-	}
+  ngDoCheck() {
+    //console.log ("Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.");
+  }
 
-	reset(){
-		this.store.dispatch(new Counter.Reset(3));
-	}
+  ngAfterContentInit() {
+    //console.log ("Called after ngOnInit when the component's or directive's content has been initialized");
+  }
+
+  ngAfterContentChecked() {
+    //console.log ("Called after ngAfterContentInit and very subsequent ngDoCheck()");
+  }
+
+  ngAfterViewInit() {
+    //console.log ("Called after ngAfterContentInit when the component's view has been initialized. Applies to components only");
+  }
+
+  ngAfterViewChecked() {
+    //console.log ("Called after every check of the component's view. Applies to components only.");
+  }
+
+  ngOnDestroy() {
+    //console.log ("Called once, before the instance is destroyed");
+  }
 }
