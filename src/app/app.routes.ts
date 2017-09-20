@@ -8,15 +8,15 @@ import { NoContentComponent } from './no-content';
 import { ProjectResolver } from './services';
 
 const appRoutes: Routes = [
-  { path: '',         component: HomeComponent },
-  { 
-    path: 'profile',     
+  { path: '', component: HomeComponent },
+  {
+    path: 'profile',
     component: ProfileComponent,
     resolve: {
       profile: ProjectResolver
     }
   },
-  { path: '**',       component: NoContentComponent },
+  { path: '**', component: NoContentComponent },
 ];
 
 export const appRoutingProviders: any[] = [];
