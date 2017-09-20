@@ -1,13 +1,30 @@
-<ul class="navbar-nav mr-auto">
-  <li class="nav-item">
-      <i class="fa fa-home fa-2x float-left"></i>
-      <a class="nav-link" [routerLink]=" ['./']" routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">Home</a>
-  </li>
-  <li class="nav-item">
-      <i class="fa fa-star fa-2x float-left"></i>
-      <a class="nav-link" [routerLink]=" ['./profile']" routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">Profile</a>
-  </li>
-</ul>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" [routerLink]=" ['./']" routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">Levi9</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav float-left">
+        <li class="nav-item">
+          <a class="nav-link" href="#">ToDo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ToDo</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">ToDo</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav float-right">
+          <li class="nav-item">
+            <a class="nav-link" [routerLink]=" ['./profile']" routerLinkActive="active" [routerLinkActiveOptions]= "{exact: true}">Profile</a>
+          </li>
+        </ul>
+    </div>
+  </div>
+</nav>
 
 <div class="container">
   <router-outlet></router-outlet>
