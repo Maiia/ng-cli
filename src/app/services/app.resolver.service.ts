@@ -17,7 +17,7 @@ abstract class RequestResolver implements Resolve<any> {
 export class ProjectResolver extends RequestResolver {
   dataUrl: string = "https://api.citysdk.waag.org/layers/parking.garage/objects?per_page=50";
 
-  public resolve() {
+  public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     return this.http.get(this.dataUrl);
   }
 }
