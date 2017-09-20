@@ -2,7 +2,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
-import { MnFullpageModule, MnFullpageService } from 'ngx-fullpage';
+
+// external application modules
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // redux
@@ -11,21 +12,16 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [ AppComponent ],
   imports: [
     BrowserModule,
     NgbModule.forRoot(),
-    MnFullpageModule.forRoot(),
 
     // redux
     StoreModule.forRoot(rootReducer),
-    StoreDevtoolsModule.instrument({
-      maxAge: 25 //  Retains last 25 states
-    })
+    StoreDevtoolsModule.instrument({ maxAge: 10 })
   ],
-  providers: [MnFullpageService],
-  bootstrap: [AppComponent]
+  providers: [],
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }

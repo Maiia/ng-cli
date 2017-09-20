@@ -1,150 +1,28 @@
+<div class="container">
+  <ngb-alert [dismissible]="false" [type]="'success'">wefrawerawer</ngb-alert>
 
-
-<div class="container-fluid p-0 m-0 fixed-top">
-  <ul class="nav container">
-    <li class="nav-item" data-menuanchor="menuAnchor1">
-      <a class="nav-link active" href="#menuAnchor1">First section</a>
-    </li>
-    <li class="nav-item" data-menuanchor="menuAnchor2">
-      <a class="nav-link" href="#menuAnchor2">Second section</a>
-    </li>
-    <li class="nav-item" data-menuanchor="menuAnchor3">
-      <a class="nav-link" href="#menuAnchor3">Third section</a>
-    </li>
-    <li class="nav-item" data-menuanchor="menuAnchor4">
-      <a class="nav-link" href="#menuAnchor4">Fourth section</a>
-    </li>
-  </ul>
-</div>
-
-<div class="container-fluid p-0 m-0" mnFullpage [mnFullpage]="options">
-
-  <section class="section main" data-anchor="menuAnchor1">
-    <div class="fp-tableCell container centered">
-      <h1>Angular X fullPage.js</h1>
-      <h4>Create Beautiful Fullscreen Scrolling Websites (now with Angular 2 and above)!</h4>
-      <img class="logo-image" src="https://raw.githubusercontent.com/meiblorn/ng2-fullpage/develop/logo.png">
-    </div>
-  </section>
-
-  <section class="section" data-anchor="menuAnchor2">
-    <div class="fp-tableCell container">
-      <h1>Easy to install !</h1>
-      <button type="button" class="btn btn-outline-secondary" placement="top" ngbTooltip="Tooltip on top">
-        Tooltip on top
+  <ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Modal title</h4>
+      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+        <span aria-hidden="true">&times;</span>
       </button>
-      <button type="button" class="btn btn-outline-secondary" placement="right" ngbTooltip="Tooltip on right">
-        Tooltip on right
-      </button>
-      <button type="button" class="btn btn-outline-secondary" placement="bottom" ngbTooltip="Tooltip on bottom">
-        Tooltip on bottom
-      </button>
-      <button type="button" class="btn btn-outline-secondary" placement="left" ngbTooltip="Tooltip on left">
-        Tooltip on left
-      </button>
-      <div class="code-block">
-        <ngb-accordion #acc="ngbAccordion" activeIds="ngb-panel-0">
-          <ngb-panel title="Simple">
-            <ng-template ngbPanelContent>
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
-              aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-              sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-              craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-              occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-              labore sustainable VHS.
-            </ng-template>
-          </ngb-panel>
-          <ngb-panel>
-            <ng-template ngbPanelTitle>
-              <span>&#9733; <b>Fancy</b> title &#9733;</span>
-            </ng-template>
-            <ng-template ngbPanelContent>
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
-              aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-              sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-              craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-              occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-              labore sustainable VHS.
-            </ng-template>
-          </ngb-panel>
-          <ngb-panel title="Disabled" [disabled]="true">
-            <ng-template ngbPanelContent>
-              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia
-              aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor,
-              sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica,
-              craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings
-              occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus
-              labore sustainable VHS.
-            </ng-template>
-          </ngb-panel>
-        </ngb-accordion>
-      </div>
     </div>
-  </section>
-
-  <section class="section" data-anchor="menuAnchor3">
-    <div class="fp-tableCell container">
-      <ngb-alert [dismissible]="false">
-        <strong>Warning!</strong> Better check yourself, you're not looking too good.
-      </ngb-alert>
-      <div class="row">
-        <div class="col">
-          <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-              <button class="dropdown-item">Action - 1</button>
-              <button class="dropdown-item">Another Action</button>
-              <button class="dropdown-item">Something else is here</button>
-            </div>
-          </div>
-        </div>
-      
-        <div class="col text-right">
-          <div ngbDropdown placement="top-right" class="d-inline-block">
-            <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle>Toggle dropup</button>
-            <div ngbDropdownMenu aria-labelledby="dropdownBasic2">
-              <button class="dropdown-item">Action - 1</button>
-              <button class="dropdown-item">Another Action</button>
-              <button class="dropdown-item">Something else is here</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <ng-template #content let-c="close" let-d="dismiss">
-        <div class="modal-header">
-          <h4 class="modal-title">Modal title</h4>
-          <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>One fine body&hellip;</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
-        </div>
-      </ng-template>
-      
-      <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
-      
-      <hr>
-      
-      <pre>{{closeResult}}</pre>
-      <div class="code-block">
-          <span class="counter">1,234,567</span>
-      </div>
+    <div class="modal-body">
+      <p>One fine body&hellip;</p>
     </div>
-  </section>
-
-  <section class="section" data-anchor="menuAnchor4">
-    <div class="fp-tableCell container">
-      <button (click)="increment()">Increment</button>
-      <div>Current Count: {{ counter | async }}</div>
-      <button (click)="decrement()">Decrement</button>
-  
-      <button (click)="reset()">Reset Counter</button>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
     </div>
-  </section>
+  </ng-template>
 
+  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+  <hr />
+
+  <h1>Counter Redux</h1>
+  <button (click)="increment()">Increment</button>
+  <div>Current Count: {{ counter | async }}</div>
+  <button (click)="decrement()">Decrement</button>
+
+  <button (click)="reset()">Reset Counter</button>
 </div>
