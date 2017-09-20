@@ -10,6 +10,7 @@ import { VERSION } from '@angular/core';
 
 export class AppComponent implements OnInit {
   infoLogStyle: string = 'color: orange; font-size: 12px;';
+  isActive: Boolean = false;
 
   constructor(
     private titleService: Title
