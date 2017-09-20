@@ -6,7 +6,7 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 @Injectable()
 
 // Abstract class
-abstract class RequestResolver implements Resolve<any> {
+abstract class RequestResolver {
   dataUrl: string;
   constructor( public http: HttpClient ){
     this.http = http;
