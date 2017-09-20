@@ -6,18 +6,18 @@ import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/r
 @Injectable()
 
 // Abstract class
-// abstract class RequestResolver implements Resolve<any> {
-//   abstract dataUrl: string;
-//   constructor( public http: HttpClient ){}
-//   abstract resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
-// }
+abstract class RequestResolver implements Resolve<any> {
+  abstract dataUrl: string;
+  constructor( public http: HttpClient ){
+    this.http = http;
+  }
+  abstract resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot)
+}
 
-export class ProjectResolver {
+export class ProjectResolver extends RequestResolver {
   dataUrl: string = "https://api.citysdk.waag.org/layers/parking.garage/objects?per_page=50";
 
-  constructor( public http: HttpClient ){}
-
-  public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  public resolve() {
     return this.http.get(this.dataUrl);
   }
 }
