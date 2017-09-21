@@ -1,6 +1,7 @@
 import { Component, AfterViewInit, HostListener, Inject, Input, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { VERSION } from '@angular/core';
+import { AuthService } from './services';
 
 @Component({
   selector: 'app-root',
@@ -10,12 +11,14 @@ import { VERSION } from '@angular/core';
 
 export class AppComponent implements OnInit {
   infoLogStyle: string = 'color: orange; font-size: 12px;';
+  isLoggedIn: Boolean;
 
   constructor(
+    public AuthService: AuthService,
     private titleService: Title
   ){
     console.log('%cAngular version: ' + VERSION.full, this.infoLogStyle);
-
+    this.isLoggedIn = this.AuthService.isLoggedIn;
     this.titleService.setTitle('App Component!')
   }
 

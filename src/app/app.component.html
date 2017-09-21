@@ -1,9 +1,9 @@
-<header></header>
+<header *ngIf="isLoggedIn"></header>
 
 <div class="container pt-3">
   <router-outlet></router-outlet>
 </div>
 
-<footer class="footer"></footer>
+<footer *ngIf="isLoggedIn" class="footer"></footer>
 
 <app-loading-indicator></app-loading-indicator>

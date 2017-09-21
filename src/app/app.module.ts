@@ -16,7 +16,7 @@ import { FooterModule, HeaderModule, LoadingIndicatorModule } from './shared';
 // custom pipes
 
 // services
-import { Interceptor, LoadingService, APP_RESOLVER_PROVIDERS } from './services';
+import { Interceptor, LoadingService, APP_RESOLVER_PROVIDERS, AuthGuard, AuthService } from './services';
 
 // redux
 import { rootReducer } from "./store/reducers/index";
@@ -29,6 +29,7 @@ import { NoContentComponent } from './no-content';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
+import { LoginComponent } from './login/login.component';
 
 @NgModule({
   declarations: [ 
@@ -36,7 +37,8 @@ import { ProductsComponent } from './products/products.component';
     NoContentComponent,
     ProfileComponent,
     HomeComponent,
-    ProductsComponent
+    ProductsComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +63,8 @@ import { ProductsComponent } from './products/products.component';
       multi: true,
     },
     ...APP_RESOLVER_PROVIDERS,
+    AuthGuard, 
+    AuthService
   ],
   bootstrap: [ AppComponent ]
 })
