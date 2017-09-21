@@ -1,12 +1,18 @@
 <div class="login-bg">
 
   <div class="login text-white">
-    <form class="form-horizontal" role="form" method="POST" action="/login">
+    <form class="form-horizontal" role="form" method="POST" action="/login" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
       <div class="row">
         <div class="col-md-12">
           <h2>Please Login</h2>
         </div>
       </div>
+
+      <!-- Error message after submit -->
+      <ngb-alert [dismissible]=false [type]="'danger'" [hidden]="validateStatus">
+        <strong>Warning!</strong> Better check yourself, you're not looking too good.
+      </ngb-alert>
+
       <!-- Email -->
       <div class="row">
         <div class="col-md-12">
@@ -14,13 +20,10 @@
             <label class="sr-only" for="email">E-Mail Address</label>
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
               <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-              <input type="text" name="email" class="form-control" id="email" placeholder="you@example.com" required autofocus>
+              <input formControlName="email" type="text" name="email" class="form-control" id="email" placeholder="you@example.com" required
+                autofocus>
             </div>
-            <div class="form-control-feedback">
-              <span class="text-danger align-middle">
-                <i class="fa fa-close"></i> Example error message
-              </span>
-            </div>
+            <validation-messages [control]="loginForm.controls.email"></validation-messages>
           </div>
         </div>
       </div>
@@ -31,13 +34,10 @@
             <label class="sr-only" for="password">Password</label>
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
               <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-              <input type="password" name="password" class="form-control" id="password" placeholder="Password" required>
+              <input formControlName="password" type="password" name="password" class="form-control" id="password" placeholder="Password"
+                required minlength="5">
             </div>
-            <div class="form-control-feedback">
-              <span class="text-danger align-middle">
-                <i class="fa fa-close"></i> Example error message
-              </span>
-            </div>
+            <validation-messages [control]="loginForm.controls.password"></validation-messages>
           </div>
         </div>
       </div>
@@ -55,7 +55,7 @@
       <!-- Buttons -->
       <div class="row" style="padding-top: 1rem">
         <div class="col-md-12">
-          <button type="submit" class="btn btn-success"><i class="fa fa-sign-in"></i> Login</button>
+          <button type="submit" class="btn btn-success" [disabled]="!loginForm.valid"><i class="fa fa-sign-in"></i> Login</button>
           <a class="btn btn-link" href="/password/reset">Forgot Your Password?</a>
         </div>
       </div>

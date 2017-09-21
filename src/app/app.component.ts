@@ -11,14 +11,13 @@ import { AuthService } from './services';
 
 export class AppComponent implements OnInit {
   infoLogStyle: string = 'color: orange; font-size: 12px;';
-  isLoggedIn: Boolean;
+  isLoggedIn: Boolean = false;
 
   constructor(
     public AuthService: AuthService,
     private titleService: Title
   ){
     console.log('%cAngular version: ' + VERSION.full, this.infoLogStyle);
-    this.isLoggedIn = this.AuthService.isLoggedIn;
     this.titleService.setTitle('App Component!')
   }
 
@@ -43,6 +42,7 @@ export class AppComponent implements OnInit {
   }
 
   ngAfterContentChecked() {
+    this.isLoggedIn = this.AuthService.checkLogin();
     //console.log ("Called after ngAfterContentInit and very subsequent ngDoCheck()");
   }
 

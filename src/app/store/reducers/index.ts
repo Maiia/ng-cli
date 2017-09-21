@@ -1,6 +1,8 @@
 // reducers
 import { counterReducer } from "./counter.reducer";
+import { loginReducer } from "./login.reducer";
 
 export const rootReducer = {
-  counter: counterReducer
+  counter: counterReducer,
+  login: loginReducer
 };

@@ -1,3 +1,4 @@
-export { FooterModule } from './footer';
-export { HeaderModule } from './header';
-export { LoadingIndicatorModule } from './loading-indicator';
+export * from './footer';
+export * from './header';
+export * from './loading-indicator';
+export * from './form-validation';

@@ -8,15 +8,23 @@ import 'rxjs/add/operator/do';
 export class AuthService {
   isLoggedIn: Boolean = false;
 
-  // store the URL so we can redirect after logging in
-  redirectUrl: string;
-
   constructor(private http: HttpClient) {
     this.isLoggedIn = false;
   }
 
-  login(): Observable<boolean>{
-    return Observable.of(true).do(val => this.isLoggedIn = true);
+  checkLogin(){
+    return this.isLoggedIn;
+  }
+
+  login(email, password): Observable<boolean>{
+    // if(email === 'admin@levi9.com' && password === "admin1"){
+      this.isLoggedIn = true;
+      return Observable.of(true);
+    // } else {
+    //   this.isLoggedIn = false;
+    // }
+
+    // return Observable.of(false);
   }
 
   logout(): void {

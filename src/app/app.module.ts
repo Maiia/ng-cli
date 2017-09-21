@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
@@ -9,7 +9,7 @@ import { ROUTER_SETTINGS } from './app.routes';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Application modules
-import { FooterModule, HeaderModule, LoadingIndicatorModule } from './shared';
+import { FooterModule, HeaderModule, LoadingIndicatorModule, ValidationModule } from './shared';
 
 // custom directives
 
@@ -44,11 +44,13 @@ import { LoginComponent } from './login/login.component';
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     ROUTER_SETTINGS,    
     NgbModule.forRoot(),
 
     HeaderModule,
     FooterModule,
+    ValidationModule,
     LoadingIndicatorModule,
 
     // redux
@@ -56,6 +58,7 @@ import { LoginComponent } from './login/login.component';
     StoreDevtoolsModule.instrument({ maxAge: 10 })
   ],
   providers: [
+    FormBuilder,
     LoadingService,
     {
       provide: HTTP_INTERCEPTORS,
