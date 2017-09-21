@@ -28,13 +28,15 @@ import { AppComponent } from './app.component';
 import { NoContentComponent } from './no-content';
 import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
+import { ProductsComponent } from './products/products.component';
 
 @NgModule({
   declarations: [ 
     AppComponent,
     NoContentComponent,
     ProfileComponent,
-    HomeComponent
+    HomeComponent,
+    ProductsComponent
   ],
   imports: [
     BrowserModule,

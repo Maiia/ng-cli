@@ -3,12 +3,14 @@ import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 import { HomeComponent } from './home';
 import { ProfileComponent } from './profile';
+import { ProductsComponent } from './products';
 import { NoContentComponent } from './no-content';
 
 import { ProjectResolver } from './services';
 
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'products', component: ProductsComponent },
   {
     path: 'profile',
     component: ProfileComponent,
