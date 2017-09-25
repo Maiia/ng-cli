@@ -1,10 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { ValidationService, AuthService } from '../services';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { IAppState } from '../store/initial-state';
 import * as Login from '../store/actions';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { ResetPasswordComponent } from '../reset-password';
 
 @Component({
   selector: 'app-login',
@@ -13,9 +15,14 @@ import * as Login from '../store/actions';
 })
 export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
+  public resetForm: FormGroup;
   public validateStatus = true;
+  closeResult: string;
+  modalRef: any;
+  @ViewChild('myProfile') myProfile: ResetPasswordComponent
 
   constructor(
+    private modalService: NgbModal,
     public AuthService: AuthService,
     private router: Router,
     private store: Store<IAppState>    
@@ -29,10 +36,13 @@ export class LoginComponent implements OnInit {
       email: new FormControl('', [<any>Validators.required/*, ValidationService.emailValidator*/]),
       password: new FormControl('', [<any>Validators.required/*, ValidationService.passwordValidator*/])
     });
+    this.resetForm = new FormGroup({
+      email: new FormControl('', [<any>Validators.required, ValidationService.emailValidator])
+    });
   }
 
   // -----------------------------------------
-  // Events methods
+  // Events handlers
   // -----------------------------------------
 
   onSubmit(form): void {
@@ -45,5 +55,14 @@ export class LoginComponent implements OnInit {
         this.validateStatus = false;
       }
     });
+  }
+
+  resetHandler(e){
+    this.modalRef.close();
+  }
+
+  open(e, content) {
+    e.preventDefault();
+    this.modalRef = this.modalService.open(content);
   }
 }

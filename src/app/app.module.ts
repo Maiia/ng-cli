@@ -20,7 +20,7 @@ import { Interceptor, LoadingService, APP_RESOLVER_PROVIDERS, AuthGuard, AuthSer
 
 // redux
 import { rootReducer } from "./store/reducers/index";
-import { StoreModule } from '@ngrx/store';
+import { StoreModule, ActionReducerMap, ActionReducer } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 // App is our top level component
@@ -30,6 +30,7 @@ import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './login/login.component';
+import { ResetPasswordComponent } from './reset-password';
 
 @NgModule({
   declarations: [ 
@@ -38,7 +39,8 @@ import { LoginComponent } from './login/login.component';
     ProfileComponent,
     HomeComponent,
     ProductsComponent,
-    LoginComponent
+    LoginComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
@@ -57,6 +59,8 @@ import { LoginComponent } from './login/login.component';
     StoreModule.forRoot(rootReducer),
     StoreDevtoolsModule.instrument({ maxAge: 10 })
   ],
+  
+  // exports:[ ResetPasswordComponent ],
   providers: [
     FormBuilder,
     LoadingService,

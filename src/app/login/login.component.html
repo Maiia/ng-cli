@@ -20,8 +20,7 @@
             <label class="sr-only" for="email">E-Mail Address</label>
             <div class="input-group mb-2 mr-sm-2 mb-sm-0">
               <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-              <input formControlName="email" type="text" name="email" class="form-control" id="email" placeholder="you@example.com" required
-                autofocus>
+              <input formControlName="email" type="text" name="email" class="form-control" id="email" placeholder="you@example.com" required>
             </div>
             <validation-messages [control]="loginForm.controls.email"></validation-messages>
           </div>
@@ -56,10 +55,39 @@
       <div class="row" style="padding-top: 1rem">
         <div class="col-md-12">
           <button type="submit" class="btn btn-success" [disabled]="!loginForm.valid"><i class="fa fa-sign-in"></i> Login</button>
-          <a class="btn btn-link" href="/password/reset">Forgot Your Password?</a>
+          <a class="btn btn-link" href="#" (click)="open($event, content)">Forgot Your Password?</a>
         </div>
       </div>
     </form>
   </div>
-
 </div>
+
+<ng-template #content let-c="close" let-d="dismiss">
+    <div class="modal-header">
+      <h4 class="modal-title">Forgot Password?</h4>
+      <button type="button" class="close" aria-label="Close" (click)="c('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <div class="text-left">
+        <div class="col-md-offset-4">
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="text-center">
+                <h3><i class="fa fa-lock fa-4x"></i></h3>
+                <p>You can reset your password here.</p>
+                <div class="panel-body">
+                  <reset-password (reset)="resetHandler($event)"></reset-password>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+    <!-- <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div> -->
+  </ng-template>
