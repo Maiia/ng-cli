@@ -22,7 +22,7 @@ const appRoutes: Routes = [
     },
     canActivate: [ AuthGuard ]
   },
-  { path: '**', component: NoContentComponent },
+  { path: '**', component: NoContentComponent, canActivate: [ AuthGuard ] },
 ];
 
 export const appRoutingProviders: any[] = [];
