@@ -8,7 +8,7 @@ import { ProductsComponent } from './products';
 import { LoginComponent } from './login';
 import { NoContentComponent } from './no-content';
 
-import { ProjectResolver } from './services';
+import { ProfileResolver } from './services';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
@@ -18,7 +18,7 @@ const appRoutes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     resolve: {
-      profile: ProjectResolver
+      profile: ProfileResolver
     },
     canActivate: [ AuthGuard ]
   },
