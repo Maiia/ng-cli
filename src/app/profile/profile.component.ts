@@ -10,10 +10,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 // Component controller
 export class ProfileComponent implements OnInit {
-  profile: any;
+  results: any;
 
   constructor(private route: ActivatedRoute) {
-    this.profile = this.route.snapshot.data['profile'];
+    this.results = this.route.snapshot.data['results'].results;
   }
 
   // -----------------------------------------
@@ -21,6 +21,6 @@ export class ProfileComponent implements OnInit {
   // -----------------------------------------
 
   ngOnInit() {
-    console.log(this.profile.features)
+    console.log(this.results)
   }
 }

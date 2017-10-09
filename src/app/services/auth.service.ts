@@ -9,7 +9,7 @@ export class AuthService {
   isLoggedIn: Boolean = false;
 
   constructor(private http: HttpClient) {
-    this.isLoggedIn = false;
+    this.isLoggedIn = true;
   }
 
   checkLogin(){

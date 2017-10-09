@@ -18,7 +18,7 @@ const appRoutes: Routes = [
     path: 'profile',
     component: ProfileComponent,
     resolve: {
-      profile: ProfileResolver
+      results: ProfileResolver
     },
     canActivate: [ AuthGuard ]
   },
