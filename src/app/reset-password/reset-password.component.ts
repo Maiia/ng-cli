@@ -23,7 +23,7 @@ export class ResetPasswordComponent implements OnInit {
     });
   }
 
-  onReset(form){
+  onReset(e, form){
     setTimeout(() => {
       console.log(form)
       this.reset.emit(form);
