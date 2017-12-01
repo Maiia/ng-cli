@@ -22,6 +22,9 @@ import { Interceptor, LoadingService, APP_RESOLVER_PROVIDERS, AuthGuard, AuthSer
 import { rootReducer } from "./store/reducers/index";
 import { StoreModule, ActionReducerMap, ActionReducer } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { EffectsModule } from '@ngrx/effects';
+
+import { ProductEffects } from './store/effects/product.effect';
 
 // App is our top level component
 import { AppComponent } from './app.component';
@@ -49,6 +52,8 @@ import { ResetPasswordComponent } from './reset-password';
     ReactiveFormsModule,
     ROUTER_SETTINGS,    
     NgbModule.forRoot(),
+
+    EffectsModule.forRoot([ProductEffects]),
 
     HeaderModule,
     FooterModule,

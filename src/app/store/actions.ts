@@ -10,6 +10,7 @@ export const USER_LOGGED_IN = 'USER_LOGGED_IN';
 export const USER_LOGGED_OUT = 'USER_LOGGED_OUT';
 
 // products
+export const PRODUCTS = 'PRODUCTS';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 
 // error
@@ -40,10 +41,16 @@ export class Logout implements Action {
   constructor(public payload: Object) {}
 }
 
+////////////////////////////////////////////////
 export class GetProducts implements Action {
-  readonly type = GET_PRODUCTS;
-  constructor(public payload: Object) {}
+  readonly type = PRODUCTS;
 }
+
+export class loadedProducts implements Action {
+  readonly type = GET_PRODUCTS;
+  constructor(public payload?: Array<Object>) {}
+}
+///////////////////////////////////////////////
 
 export class TriggerError implements Action {
   readonly type = HTTP_ERROR;
@@ -58,6 +65,7 @@ export type All
 | Login
 | Logout
 
+| loadedProducts
 | GetProducts
 
 | TriggerError

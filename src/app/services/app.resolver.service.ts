@@ -29,9 +29,7 @@ export class ProfileResolver implements Resolve<any>  {
   public dataUrl: string = "https://swapi.co/api/people/";
   cachedData: Object;
 
-  constructor( public http: HttpClient ){
-    this.http = http;
-  }
+  constructor( public http: HttpClient ){}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
     if (this.cachedData) {
@@ -41,7 +39,6 @@ export class ProfileResolver implements Resolve<any>  {
         this.cachedData = data;
       });
     }
-    
   }
 }
 

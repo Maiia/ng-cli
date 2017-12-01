@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductsService } from '../services'
+// import { ProductsService } from '../services'
 import { Observable } from 'rxjs/Observable';
 import { Store  } from '@ngrx/store';
 import { IAppState } from '../store/initial-state';
-import * as Products from '../store/actions';
+// import * as Products from '../store/actions';
+import { GetProducts } from '../store/actions';
 import { iProducts } from '../store/models/products.model';
 
 @Component({
@@ -16,7 +17,7 @@ export class ProductsComponent implements OnInit {
   public products: any;
 
   constructor(
-    public productsService: ProductsService,
+    // public productsService: ProductsService,
     private store: Store<IAppState>
   ) {
     this.store.select('products').subscribe(data =>{
@@ -25,9 +26,9 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.productsService.getProducts().subscribe(data => {
-      this.store.dispatch(new Products.GetProducts(data));
-    })
+    // this.productsService.getProducts().subscribe(data => {
+      this.store.dispatch(new GetProducts());
+    // })
   }
 
   getRandomInt(min = 1, max = 10) {
