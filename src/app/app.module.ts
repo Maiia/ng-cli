@@ -16,7 +16,7 @@ import { FooterModule, HeaderModule, LoadingIndicatorModule, ValidationModule } 
 // custom pipes
 
 // services
-import { Interceptor, LoadingService, APP_RESOLVER_PROVIDERS, AuthGuard, AuthService } from './services';
+import { Interceptor, LoadingService, APP_RESOLVER_PROVIDERS, AuthGuard, AuthService, ProductsService } from './services';
 
 // redux
 import { rootReducer } from "./store/reducers/index";
@@ -64,6 +64,7 @@ import { ResetPasswordComponent } from './reset-password';
   providers: [
     FormBuilder,
     LoadingService,
+    ProductsService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: Interceptor,

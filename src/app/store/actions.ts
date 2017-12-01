@@ -9,6 +9,9 @@ export const RESET_COUNTER = 'RESET_COUNTER';
 export const USER_LOGGED_IN = 'USER_LOGGED_IN';
 export const USER_LOGGED_OUT = 'USER_LOGGED_OUT';
 
+// products
+export const GET_PRODUCTS = 'GET_PRODUCTS';
+
 export class Incremet implements Action {
   readonly type = INCREMENT_COUNTER;
   constructor(public payload: number) {}
@@ -34,6 +37,11 @@ export class Logout implements Action {
   constructor(public payload: Object) {}
 }
 
+export class GetProducts implements Action {
+  readonly type = GET_PRODUCTS;
+  constructor(public payload: Object) {}
+}
+
 export type All
 = Incremet
 | Decrement
@@ -41,3 +49,5 @@ export type All
 
 | Login
 | Logout
+
+| GetProducts

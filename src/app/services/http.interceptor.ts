@@ -54,6 +54,7 @@ export class Interceptor implements HttpInterceptor {
 
   onError(error){
     this.LoadingService.hideLoading();
+    // console.log(error)
     if (error instanceof HttpErrorResponse) {
       if (error.status === 401) {
         // JWT Token Expired
