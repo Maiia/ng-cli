@@ -4,11 +4,16 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/do';
 import { LoadingService } from './loading.service';
 
+import { Store  } from '@ngrx/store';
+import { IAppState } from '../store/initial-state';
+import * as Error from '../store/actions';
+
 @Injectable()
 export class Interceptor implements HttpInterceptor {
 
   constructor(
-    private LoadingService: LoadingService
+    private LoadingService: LoadingService,
+    private store: Store<IAppState>
   ) {}
   
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
@@ -54,7 +59,7 @@ export class Interceptor implements HttpInterceptor {
 
   onError(error){
     this.LoadingService.hideLoading();
-    // console.log(error)
+    this.store.dispatch(new Error.TriggerError(error));
     if (error instanceof HttpErrorResponse) {
       if (error.status === 401) {
         // JWT Token Expired

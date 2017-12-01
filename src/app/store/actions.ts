@@ -12,6 +12,9 @@ export const USER_LOGGED_OUT = 'USER_LOGGED_OUT';
 // products
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 
+// error
+export const HTTP_ERROR = 'HTTP_ERROR';
+
 export class Incremet implements Action {
   readonly type = INCREMENT_COUNTER;
   constructor(public payload: number) {}
@@ -42,6 +45,11 @@ export class GetProducts implements Action {
   constructor(public payload: Object) {}
 }
 
+export class TriggerError implements Action {
+  readonly type = HTTP_ERROR;
+  constructor(public payload: Object) {}
+}
+
 export type All
 = Incremet
 | Decrement
@@ -51,3 +59,5 @@ export type All
 | Logout
 
 | GetProducts
+
+| TriggerError
