@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 // import { ProductsService } from '../services'
 import { Store  } from '@ngrx/store';
-import { iProducts } from '../store/models/products.model';
 // import * as Products from '../store/actions';
 import { loadProducts } from '../store/actions';
-import { IAppState } from '../store/initial-state';
+import { IAppState, selectProductsState } from '../store/initial-state';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -20,7 +19,7 @@ export class ProductsComponent implements OnInit {
     // public productsService: ProductsService,
     private store: Store<IAppState>
   ) {
-    this.products$ = this.store.select('products')
+    this.products$ = this.store.select(selectProductsState)
   }
 
   ngOnInit() {

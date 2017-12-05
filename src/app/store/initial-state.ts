@@ -1,3 +1,5 @@
+import { createFeatureSelector } from '@ngrx/store';
+
 import { iCounter } from './models/counter.model';
 import { iLogin } from './models/login.model';
 import { iProducts } from './models/products.model';
@@ -9,3 +11,6 @@ export interface IAppState {
   products: iProducts;
   error: iError
 };
+
+// export Selectors
+export const selectProductsState = createFeatureSelector<IAppState>('products');
