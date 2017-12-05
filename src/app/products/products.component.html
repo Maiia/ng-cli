@@ -1,7 +1,7 @@
 <div class="card-deck row">
-  <div class="col-sm-4" *ngFor="let card of products">
+  <div class="col-sm-4" *ngFor="let card of (products$ | async)">
     <div class="card">
-      <div class="card-header">{{card.name}}</div>
+      <div class="card-header">{{card.name }}</div>
       <div class="card-body">
         <h4 class="card-title">{{card.username}}</h4>
         <p class="card-text">{{card.email}}</p>

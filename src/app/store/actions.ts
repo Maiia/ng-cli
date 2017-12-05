@@ -11,8 +11,9 @@ export const USER_LOGGED_IN = 'USER_LOGGED_IN';
 export const USER_LOGGED_OUT = 'USER_LOGGED_OUT';
 
 // products
-export const PRODUCTS = 'PRODUCTS';
-export const GET_PRODUCTS = 'GET_PRODUCTS';
+export const LOAD_PRODUCTS = 'LOAD_PRODUCTS';
+export const LOAD_PRODUCTS_SUCCESS = 'LOAD_PRODUCTS_SUCCESS';
+export const LOAD_PRODUCTS_FAIL = 'LOAD_PRODUCTS_FAIL';
 
 // error
 export const HTTP_ERROR = 'HTTP_ERROR';
@@ -43,12 +44,17 @@ export class Logout implements Action {
 }
 
 ////////////////////////////////////////////////
-export class GetProducts implements Action {
-  readonly type = PRODUCTS;
+export class loadProducts implements Action {
+  readonly type = LOAD_PRODUCTS;
 }
 
-export class loadedProducts implements Action {
-  readonly type = GET_PRODUCTS;
+export class loadProductsSuccess implements Action {
+  readonly type = LOAD_PRODUCTS_SUCCESS;
+  constructor(public payload?: iProducts) {}
+}
+
+export class loadProductsFail implements Action {
+  readonly type = LOAD_PRODUCTS_FAIL;
   constructor(public payload?: iProducts) {}
 }
 ///////////////////////////////////////////////
@@ -66,7 +72,8 @@ export type All
 | Login
 | Logout
 
-| loadedProducts
-| GetProducts
+| loadProducts
+| loadProductsSuccess
+| loadProductsFail
 
 | TriggerError

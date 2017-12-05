@@ -19,7 +19,7 @@ import { FooterModule, HeaderModule, LoadingIndicatorModule, ValidationModule } 
 import { Interceptor, LoadingService, APP_RESOLVER_PROVIDERS, AuthGuard, AuthService, ProductsService } from './services';
 
 // redux
-import { rootReducer } from "./store/reducers/index";
+import { rootReducer } from "./store/reducers";
 import { StoreModule, ActionReducerMap, ActionReducer } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';

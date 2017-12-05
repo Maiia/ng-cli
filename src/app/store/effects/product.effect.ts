@@ -15,14 +15,14 @@ export type Action = ProductsActions.All;
 
 @Injectable()
 export class ProductEffects {
-  @Effect() login$: Observable<Action> = this.actions$
-    .ofType(ProductsActions.PRODUCTS)
+  @Effect() products$: Observable<Action> = this.actions$
+    .ofType(ProductsActions.LOAD_PRODUCTS)
     .mergeMap(action =>
       this.productService.getProducts()
       
       // If successful, dispatch success action with result
-      .map((data: iProducts) => {
-        return new ProductsActions.loadedProducts(data)
+      .map((response: iProducts) => {
+        return new ProductsActions.loadProductsSuccess(response)
       })
 
       // If request fails, dispatch failed action

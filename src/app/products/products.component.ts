@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 // import { ProductsService } from '../services'
 import { Store  } from '@ngrx/store';
-import { IAppState } from '../store/initial-state';
+import { iProducts } from '../store/models/products.model';
 // import * as Products from '../store/actions';
-import { GetProducts } from '../store/actions';
+import { loadProducts } from '../store/actions';
+import { IAppState } from '../store/initial-state';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-products',
@@ -12,20 +14,18 @@ import { GetProducts } from '../store/actions';
 })
 
 export class ProductsComponent implements OnInit {
-  public products: any;
+  public products$: Observable<any>;
 
   constructor(
     // public productsService: ProductsService,
     private store: Store<IAppState>
   ) {
-    this.store.select('products').subscribe(data =>{
-      this.products = data ? Array.from(Object.keys(data), k => data[k]): [];
-    });
+    this.products$ = this.store.select('products')
   }
 
   ngOnInit() {
     // this.productsService.getProducts().subscribe(data => {
-      this.store.dispatch(new GetProducts());
+      this.store.dispatch(new loadProducts());
     // })
   }
 
