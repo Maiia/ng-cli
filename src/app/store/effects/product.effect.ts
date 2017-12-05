@@ -8,6 +8,7 @@ import { Action } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { of } from 'rxjs/observable/of';
 import { ProductsService } from '../../services';
+import { iProducts } from '../models/products.model'
 
 import * as ProductsActions from '../actions';
 export type Action = ProductsActions.All;
@@ -20,7 +21,7 @@ export class ProductEffects {
       this.productService.getProducts()
       
       // If successful, dispatch success action with result
-      .map((data: Array<Object>) => {
+      .map((data: iProducts) => {
         return new ProductsActions.loadedProducts(data)
       })
 
@@ -29,7 +30,6 @@ export class ProductEffects {
     );
 
   constructor(
-    private http: HttpClient,
     private actions$: Actions,
     private productService: ProductsService
   ) {}      

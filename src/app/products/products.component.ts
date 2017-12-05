@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 // import { ProductsService } from '../services'
-import { Observable } from 'rxjs/Observable';
 import { Store  } from '@ngrx/store';
 import { IAppState } from '../store/initial-state';
 // import * as Products from '../store/actions';
 import { GetProducts } from '../store/actions';
-import { iProducts } from '../store/models/products.model';
 
 @Component({
   selector: 'app-products',

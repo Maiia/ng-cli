@@ -1,4 +1,5 @@
 import { Action } from '@ngrx/store';
+import { iProducts } from './models/products.model'
 
 // counter actions
 export const INCREMENT_COUNTER = 'INCREMENT_COUNTER';
@@ -48,7 +49,7 @@ export class GetProducts implements Action {
 
 export class loadedProducts implements Action {
   readonly type = GET_PRODUCTS;
-  constructor(public payload?: Array<Object>) {}
+  constructor(public payload?: iProducts) {}
 }
 ///////////////////////////////////////////////
 
