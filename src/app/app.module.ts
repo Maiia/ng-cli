@@ -18,12 +18,14 @@ import { FooterModule, HeaderModule, LoadingIndicatorModule, ValidationModule } 
 // services
 import { Interceptor, LoadingService, APP_RESOLVER_PROVIDERS, AuthGuard, AuthService, ProductsService } from './services';
 
-// redux
+// @ngrx
 import { StoreModule, ActionReducerMap, ActionReducer } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
+import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
 import { rootReducer } from "./store/reducers";
 import { effects } from './store/effects';
+import { CustomSerializer } from './store/custom-router-state-serializer'
 
 // App is our top level component
 import { AppComponent } from './app.component';
@@ -57,9 +59,10 @@ import { ResetPasswordComponent } from './reset-password';
     ValidationModule,
     LoadingIndicatorModule,
     
-    // redux
+    // @ngrx
     StoreModule.forRoot(rootReducer),
     StoreDevtoolsModule.instrument({ maxAge: 10 }),
+    StoreRouterConnectingModule,
     EffectsModule.forRoot(effects)
   ],
   
@@ -68,11 +71,8 @@ import { ResetPasswordComponent } from './reset-password';
     FormBuilder,
     LoadingService,
     ProductsService,
-    {
-      provide: HTTP_INTERCEPTORS,
-      useClass: Interceptor,
-      multi: true,
-    },
+    { provide: RouterStateSerializer, useClass: CustomSerializer },
+    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
     ...APP_RESOLVER_PROVIDERS,
     AuthGuard, 
     AuthService

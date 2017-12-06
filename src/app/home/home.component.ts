@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 import * as Counter from '../store/actions';
-import { IAppState } from '../store/initial-state';
+import { IAppState, getCounterState } from '../store/initial-state';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Title } from '@angular/platform-browser';
 
@@ -13,7 +13,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class HomeComponent implements OnInit {
   closeResult: string;
-  counter: Observable<any>;
+  counter$: Observable<any>;
 
   constructor(
     private titleService: Title,
@@ -28,7 +28,7 @@ export class HomeComponent implements OnInit {
   // -----------------------------------------
   
   ngOnInit() {
-    this.counter = this.store.select('counter');
+    this.counter$ = this.store.select(getCounterState);
   }
 
   open(content) {
