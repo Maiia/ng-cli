@@ -3,8 +3,7 @@ import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms'
 import { ValidationService, AuthService } from '../services';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { IAppState } from '../store/initial-state';
-import * as Login from '../store/actions';
+import { IAppState, Login, Logout } from '../store';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 import { ResetPasswordComponent } from '../reset-password';
 
@@ -48,7 +47,7 @@ export class LoginComponent implements OnInit {
   onSubmit(form): void {
     this.AuthService.login(form.email, form.password).subscribe((result) => {
       if (result) {
-        this.store.dispatch(new Login.Login({ 'email': form.email, 'password': form.password }));
+        this.store.dispatch(new Login({ 'email': form.email, 'password': form.password }));
         this.validateStatus = true;
         this.router.navigate(['/']);
       } else {

@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
-import * as Counter from '../store/actions';
-import { IAppState, getCounterState } from '../store/initial-state';
+import { IAppState, getCounterState, Incremet, Decrement, Reset } from '../store';
 import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 import { Title } from '@angular/platform-browser';
 
@@ -36,14 +35,14 @@ export class HomeComponent implements OnInit {
   }
 
   increment(){
-		this.store.dispatch(new Counter.Incremet(1));
+		this.store.dispatch(new Incremet(1));
 	}
 
 	decrement(){
-		this.store.dispatch(new Counter.Decrement(1));
+		this.store.dispatch(new Decrement(1));
 	}
 
 	reset(){
-		this.store.dispatch(new Counter.Reset(3));
+		this.store.dispatch(new Reset(3));
 	}
 }

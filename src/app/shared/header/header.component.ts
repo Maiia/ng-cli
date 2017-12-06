@@ -1,8 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store  } from '@ngrx/store';
-import { IAppState } from '../../store/initial-state';
+import { IAppState } from '../../store';
 import { isUndefined } from 'lodash/isUndefined'
-import { iError } from '../../store/models/error.model'
 
 // Annotation section
 @Component({

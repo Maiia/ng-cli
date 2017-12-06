@@ -6,27 +6,26 @@ import { Observable } from 'rxjs/Observable';
 import { Action } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { of } from 'rxjs/observable/of';
+
+import { LOAD_PRODUCTS, loadProductsSuccess, TriggerError } from '../actions'
 import { iProducts } from '../models/products.model'
 import { ProductsService } from '../../services';
-
-import * as ProductsActions from '../actions';
-export type Action = ProductsActions.PRODUCTS;
 
 @Injectable()
 export class ProductEffects {
   @Effect() 
   products$: Observable<Action> = this.actions$
-    .ofType(ProductsActions.LOAD_PRODUCTS)
+    .ofType(LOAD_PRODUCTS)
     .mergeMap(action =>
       this.productService.getProducts()
       
       // If successful, dispatch success action with result
       .map((response: iProducts) => {
-        return new ProductsActions.loadProductsSuccess(response)
+        return new loadProductsSuccess(response)
       })
 
       // If request fails, dispatch failed action
-      .catch(() => of({ type: 'FAILED' }))
+      .catch((error) => of(new TriggerError(error)))
     );
 
   constructor(

@@ -1,9 +1,8 @@
-import * as ErrorActions from '../actions';
-export type Action = ErrorActions.ERROR;
+import { HTTP_ERROR, ERROR } from '../actions'
 
-export function errorReducer(state: {}, action: Action) {
+export function errorReducer(state: {}, action: ERROR) {
 	switch (action.type) {
-		case ErrorActions.HTTP_ERROR:
+		case HTTP_ERROR:
 			return Object.assign({}, action.payload);
 		default:
 			return state;

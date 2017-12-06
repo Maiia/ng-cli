@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-// import { ProductsService } from '../services'
 import { Store  } from '@ngrx/store';
-// import * as Products from '../store/actions';
-import { loadProducts } from '../store/actions';
-import { IAppState, selectProductsState } from '../store/initial-state';
+import { IAppState, selectProductsState, loadProducts } from '../store';
 import { Observable } from 'rxjs/Observable';
 
 @Component({
@@ -16,16 +13,13 @@ export class ProductsComponent implements OnInit {
   public products$: Observable<any>;
 
   constructor(
-    // public productsService: ProductsService,
     private store: Store<IAppState>
   ) {
     this.products$ = this.store.select(selectProductsState)
   }
 
   ngOnInit() {
-    // this.productsService.getProducts().subscribe(data => {
-      this.store.dispatch(new loadProducts());
-    // })
+    this.store.dispatch(new loadProducts());
   }
 
   getRandomInt(min = 1, max = 10) {

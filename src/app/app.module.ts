@@ -23,9 +23,7 @@ import { StoreModule, ActionReducerMap, ActionReducer } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule, RouterStateSerializer } from '@ngrx/router-store';
-import { rootReducer } from "./store/reducers";
-import { effects } from './store/effects';
-import { CustomSerializer } from './store/custom-router-state-serializer'
+import { reducers, effects, CustomSerializer } from "./store";
 
 // App is our top level component
 import { AppComponent } from './app.component';
@@ -60,7 +58,7 @@ import { ResetPasswordComponent } from './reset-password';
     LoadingIndicatorModule,
     
     // @ngrx
-    StoreModule.forRoot(rootReducer),
+    StoreModule.forRoot(reducers),
     StoreDevtoolsModule.instrument({ maxAge: 10 }),
     StoreRouterConnectingModule,
     EffectsModule.forRoot(effects)
