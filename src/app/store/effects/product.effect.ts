@@ -2,20 +2,20 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 import 'rxjs/add/operator/catch';
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import { Action } from '@ngrx/store';
 import { Actions, Effect } from '@ngrx/effects';
 import { of } from 'rxjs/observable/of';
-import { ProductsService } from '../../services';
 import { iProducts } from '../models/products.model'
+import { ProductsService } from '../../services';
 
 import * as ProductsActions from '../actions';
-export type Action = ProductsActions.All;
+export type Action = ProductsActions.PRODUCTS;
 
 @Injectable()
 export class ProductEffects {
-  @Effect() products$: Observable<Action> = this.actions$
+  @Effect() 
+  products$: Observable<Action> = this.actions$
     .ofType(ProductsActions.LOAD_PRODUCTS)
     .mergeMap(action =>
       this.productService.getProducts()

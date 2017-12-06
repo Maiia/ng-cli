@@ -1,5 +1,5 @@
 import * as ProductsActions from '../actions';
-export type Action = ProductsActions.All;
+export type Action = ProductsActions.PRODUCTS;
 
 export const initialState = []
 

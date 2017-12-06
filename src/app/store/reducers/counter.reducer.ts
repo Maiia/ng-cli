@@ -1,5 +1,5 @@
 import * as CounterActions from '../actions';
-export type Action = CounterActions.All;
+export type Action = CounterActions.COUNTER;
 
 export function counterReducer(state: number = 0, action: Action) {
 	switch (action.type) {

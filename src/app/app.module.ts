@@ -19,12 +19,11 @@ import { FooterModule, HeaderModule, LoadingIndicatorModule, ValidationModule } 
 import { Interceptor, LoadingService, APP_RESOLVER_PROVIDERS, AuthGuard, AuthService, ProductsService } from './services';
 
 // redux
-import { rootReducer } from "./store/reducers";
 import { StoreModule, ActionReducerMap, ActionReducer } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-
-import { ProductEffects } from './store/effects/product.effect';
+import { rootReducer } from "./store/reducers";
+import { effects } from './store/effects';
 
 // App is our top level component
 import { AppComponent } from './app.component';
@@ -53,16 +52,15 @@ import { ResetPasswordComponent } from './reset-password';
     ROUTER_SETTINGS,    
     NgbModule.forRoot(),
 
-    EffectsModule.forRoot([ProductEffects]),
-
     HeaderModule,
     FooterModule,
     ValidationModule,
     LoadingIndicatorModule,
-
+    
     // redux
     StoreModule.forRoot(rootReducer),
-    StoreDevtoolsModule.instrument({ maxAge: 10 })
+    StoreDevtoolsModule.instrument({ maxAge: 10 }),
+    EffectsModule.forRoot(effects)
   ],
   
   // exports:[ ResetPasswordComponent ],

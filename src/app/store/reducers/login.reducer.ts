@@ -1,5 +1,5 @@
 import * as LoginActions from '../actions';
-export type Action = LoginActions.All;
+export type Action = LoginActions.AUTH;
 
 export function loginReducer(state: Object = {}, action: Action) {
 	switch (action.type) {
