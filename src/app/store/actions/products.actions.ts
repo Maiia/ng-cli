@@ -1,5 +1,5 @@
 import { Action } from '@ngrx/store';
-import { iProducts } from '../models'
+import * as fromModels from '../models'
 
 // products
 export const LOAD_PRODUCTS = '[Products] LOAD_PRODUCTS';
@@ -12,12 +12,12 @@ export class loadProducts implements Action {
 
 export class loadProductsSuccess implements Action {
   readonly type = LOAD_PRODUCTS_SUCCESS;
-  constructor(public payload?: iProducts) {}
+  constructor(public payload?: fromModels.iProducts) {}
 }
 
 export class loadProductsFail implements Action {
   readonly type = LOAD_PRODUCTS_FAIL;
-  constructor(public payload?: iProducts) {}
+  constructor(public payload?: fromModels.iProducts) {}
 }
 
 export type PRODUCTS = 

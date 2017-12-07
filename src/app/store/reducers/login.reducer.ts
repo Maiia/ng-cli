@@ -1,10 +1,10 @@
-import { AUTH, USER_LOGGED_IN, USER_LOGGED_OUT } from '../actions'
+import * as fromAuth from '../actions/auth.actions'
 
-export function loginReducer(state: Object = {}, action: AUTH) {
+export function loginReducer(state: Object = {}, action: fromAuth.AUTH) {
 	switch (action.type) {
-		case USER_LOGGED_IN:
+		case fromAuth.USER_LOGGED_IN:
 			return Object.assign({}, action.payload);
-		case USER_LOGGED_OUT:
+		case fromAuth.USER_LOGGED_OUT:
 			return Object.assign({});
 		default:
 			return state;

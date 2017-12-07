@@ -1,17 +1,17 @@
-import { COUNTER, INCREMENT_COUNTER, DECREMENT_COUNTER, RESET_COUNTER } from '../actions'
-import { iCounter } from '../models';
+import * as fromCounter from '../actions'
+import * as fromModels from '../models';
 
-export const initialState: iCounter = {
+export const initialState: fromModels.iCounter = {
 	counter: 0
 }
 
-export function counterReducer(state: iCounter = initialState, action: COUNTER) {
+export function counterReducer(state: fromModels.iCounter = initialState, action: fromCounter.COUNTER) {
 	switch (action.type) {
-		case INCREMENT_COUNTER:
+		case fromCounter.INCREMENT_COUNTER:
 			return { counter: state.counter + action.payload };			
-		case DECREMENT_COUNTER:
+		case fromCounter.DECREMENT_COUNTER:
 			return { counter: state.counter - action.payload };
-		case RESET_COUNTER:
+		case fromCounter.RESET_COUNTER:
 			return { counter: action.payload };
 		default:
 			return state;

@@ -1,8 +1,8 @@
-import { HTTP_ERROR, ERROR } from '../actions'
+import * as fromError from '../actions'
 
-export function errorReducer(state: {}, action: ERROR) {
+export function errorReducer(state: {}, action: fromError.ERROR) {
 	switch (action.type) {
-		case HTTP_ERROR:
+		case fromError.HTTP_ERROR:
 			return Object.assign({}, action.payload);
 		default:
 			return state;
