@@ -1,6 +1,5 @@
 import { routerReducer } from '@ngrx/router-store';
 
-// reducers
 import { counterReducer } from "./counter.reducer";
 import { loginReducer } from "./login.reducer";
 import { productsReducer } from "./products.reducer";

@@ -9,14 +9,14 @@ import { ROUTER_SETTINGS } from './app.routes';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Application modules
-import { FooterModule, HeaderModule, LoadingIndicatorModule, ValidationModule } from './shared';
+import * as fromSharedModules from './shared'
 
 // custom directives
 
 // custom pipes
 
 // services
-import { Interceptor, LoadingService, APP_RESOLVER_PROVIDERS, AuthGuard, AuthService, ProductsService } from './services';
+import * as fromServices from './services';
 
 // @ngrx
 import { StoreModule, ActionReducerMap, ActionReducer } from '@ngrx/store';
@@ -52,10 +52,7 @@ import { ResetPasswordComponent } from './reset-password';
     ROUTER_SETTINGS,    
     NgbModule.forRoot(),
 
-    HeaderModule,
-    FooterModule,
-    ValidationModule,
-    LoadingIndicatorModule,
+    ...fromSharedModules.modules,
     
     // @ngrx
     StoreModule.forRoot(fromStore.reducers),
@@ -67,13 +64,9 @@ import { ResetPasswordComponent } from './reset-password';
   // exports:[ ResetPasswordComponent ],
   providers: [
     FormBuilder,
-    LoadingService,
-    ProductsService,
     { provide: RouterStateSerializer, useClass: fromStore.CustomSerializer },
-    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true },
-    ...APP_RESOLVER_PROVIDERS,
-    AuthGuard, 
-    AuthService
+    { provide: HTTP_INTERCEPTORS, useClass: fromServices.Interceptor, multi: true },
+    ...fromServices.services
   ],
   bootstrap: [ AppComponent ]
 })
