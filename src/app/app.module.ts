@@ -15,7 +15,7 @@ import * as fromSharedModules from './shared'
 
 // custom pipes
 
-// services
+// Application services
 import * as fromServices from './services';
 
 // @ngrx

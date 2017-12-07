@@ -1,5 +1,7 @@
-import { ProductEffects } from './product.effect'
+import { RouterEffects } from './router.effects'
+import { ProductEffects } from './product.effects'
 
-export const effects: any[] = [ ProductEffects ]
+export const effects: any[] = [ RouterEffects, ProductEffects ]
 
-export * from './product.effect'
+export * from './router.effects'
+export * from './product.effects'

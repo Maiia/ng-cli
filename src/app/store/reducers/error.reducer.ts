@@ -1,4 +1,4 @@
-import * as fromError from '../actions'
+import * as fromError from '../actions/error.actions'
 
 export function errorReducer(state: {}, action: fromError.ERROR) {
 	switch (action.type) {
