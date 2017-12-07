@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store  } from '@ngrx/store';
-import { IAppState } from '../../store';
+import * as fromStore from '../../store';
 import { isUndefined } from 'lodash/isUndefined'
 
 // Annotation section
@@ -16,7 +16,7 @@ export class HeaderComponent implements OnInit {
   error: Boolean;
   
   constructor(
-    private store: Store<IAppState>
+    private store: Store<fromStore.IAppState>
   ) {
     this.store.select('error').subscribe(data => {
       if(data){

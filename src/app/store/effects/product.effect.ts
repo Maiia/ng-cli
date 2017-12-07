@@ -8,12 +8,12 @@ import { Actions, Effect } from '@ngrx/effects';
 import { of } from 'rxjs/observable/of';
 
 import { LOAD_PRODUCTS, loadProductsSuccess, TriggerError } from '../actions'
-import { iProducts } from '../models/products.model'
+import { iProducts } from '../models'
 import { ProductsService } from '../../services';
 
 @Injectable()
 export class ProductEffects {
-  @Effect() 
+  @Effect()
   products$: Observable<Action> = this.actions$
     .ofType(LOAD_PRODUCTS)
     .mergeMap(action =>

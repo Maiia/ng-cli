@@ -2,10 +2,7 @@ import { createSelector, createFeatureSelector } from '@ngrx/store'
 import { routerReducer, RouterReducerState }  from '@ngrx/router-store'
 import { RouterStateUrl } from './custom-router-state-serializer'
 
-import { iCounter } from './models/counter.model';
-import { iLogin } from './models/login.model';
-import { iProducts } from './models/products.model';
-import { iError } from './models/error.model';
+import { iCounter, iLogin, iProducts, iError } from './models';
 
 export interface IAppState {
   routerReducer: RouterReducerState<RouterStateUrl>,

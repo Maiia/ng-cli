@@ -5,14 +5,14 @@ import 'rxjs/add/operator/do';
 import { LoadingService } from './loading.service';
 
 import { Store  } from '@ngrx/store';
-import { IAppState } from '../store';
+import * as fromStore from '../store';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
 
   constructor(
     private LoadingService: LoadingService,
-    private store: Store<IAppState>
+    private store: Store<fromStore.IAppState>
   ) {}
   
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {

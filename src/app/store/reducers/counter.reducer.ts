@@ -1,5 +1,5 @@
 import { COUNTER, INCREMENT_COUNTER, DECREMENT_COUNTER, RESET_COUNTER } from '../actions'
-import { iCounter } from '../models/counter.model';
+import { iCounter } from '../models';
 
 export const initialState: iCounter = {
 	counter: 0
