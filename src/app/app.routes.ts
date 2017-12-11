@@ -2,6 +2,8 @@ import { ModuleWithProviders } from "@angular/core";
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 import { AuthGuard } from './services';
 
+import * as fromStore from './store'
+
 import { HomeComponent } from './home';
 import { ProfileComponent } from './profile';
 import { ProductsComponent } from './products';
@@ -13,7 +15,7 @@ import { ProfileResolver } from './services';
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '', component: HomeComponent, canActivate: [ AuthGuard ] },
-  { path: 'products', component: ProductsComponent, canActivate: [ AuthGuard ] },
+  { path: 'products', component: ProductsComponent, canActivate: [ fromStore.ProductsGuard ] },
   {
     path: 'profile',
     component: ProfileComponent,

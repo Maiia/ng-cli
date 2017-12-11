@@ -66,7 +66,8 @@ import { ResetPasswordComponent } from './reset-password';
     FormBuilder,
     { provide: RouterStateSerializer, useClass: fromStore.CustomSerializer },
     { provide: HTTP_INTERCEPTORS, useClass: fromServices.Interceptor, multi: true },
-    ...fromServices.services
+    ...fromServices.services,
+    ...fromStore.guards
   ],
   bootstrap: [ AppComponent ]
 })

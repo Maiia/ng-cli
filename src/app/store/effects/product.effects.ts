@@ -35,15 +35,15 @@ export class ProductEffects {
       .catch(error => of(new fromActions.TriggerError(error)))
     );   
     
-    @Effect()
-    redirect$: Observable<Action> = this.actions$
-      .ofType(fromActions.LOAD_PRODUCTS_SUCCESS)
-      .map((action: fromActions.loadProductsSuccess) => action.payload)
-      .map(action => {
-        if(confirm("are you sure")){
-          return new fromActions.Go({ path: ['/404'] })
-        } else {
-          return new fromActions.Forward()
-        }
-      });
+    // @Effect()
+    // redirect$: Observable<Action> = this.actions$
+    //   .ofType(fromActions.LOAD_PRODUCTS_SUCCESS)
+    //   .map((action: fromActions.loadProductsSuccess) => action.payload)
+    //   .map(action => {
+    //     if(confirm("are you sure")){
+    //       return new fromActions.Go({ path: ['/404'] })
+    //     } else {
+    //       return new fromActions.Forward()
+    //     }
+    //   });
 }
