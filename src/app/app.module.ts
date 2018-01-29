@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
 
 import { ROUTER_SETTINGS } from './app.routes';
 
@@ -28,7 +29,6 @@ import * as fromStore from './store';
 // App is our top level component
 import { AppComponent } from './app.component';
 import { NoContentComponent } from './no-content';
-import { ProfileComponent } from './profile/profile.component';
 import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './login/login.component';
@@ -38,7 +38,6 @@ import { ResetPasswordComponent } from './reset-password';
   declarations: [ 
     AppComponent,
     NoContentComponent,
-    ProfileComponent,
     HomeComponent,
     ProductsComponent,
     LoginComponent,
@@ -47,11 +46,12 @@ import { ResetPasswordComponent } from './reset-password';
   imports: [
     BrowserModule,
     HttpClientModule,
+    
     FormsModule,
     ReactiveFormsModule,
-    ROUTER_SETTINGS,    
     NgbModule.forRoot(),
-
+    ROUTER_SETTINGS,
+    
     ...fromSharedModules.modules,
     
     // @ngrx
