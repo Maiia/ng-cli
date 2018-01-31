@@ -9,6 +9,7 @@ import * as fromStore from '../store';
 
 @Injectable()
 export class Interceptor implements HttpInterceptor {
+  public cache: HttpEvent<any>;
 
   constructor(
     private LoadingService: LoadingService,
@@ -32,6 +33,12 @@ export class Interceptor implements HttpInterceptor {
       }
     });
 
+    // First, check the cache to see if this request exists.
+    if(this.cache != null) {
+      this.LoadingService.hideLoading();
+      return Observable.of(this.cache);
+    }
+
     return next
       .handle(customReq)
       .do((event: HttpEvent<any>) => {
@@ -51,7 +58,9 @@ export class Interceptor implements HttpInterceptor {
 
   onSuccess(event){
     if (event instanceof HttpResponse) {
+      // No cached response exists. Go to the network, and cache the response when it arrives.
       // Intercepting HTTP responses
+      this.cache = event;
       this.LoadingService.hideLoading();
     }
   }

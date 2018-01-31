@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/publishReplay';
 
 @Injectable()
 export class ProductsService {
@@ -12,6 +12,6 @@ export class ProductsService {
   }
 
   getProducts(){
-    return this.http.get(this.dataUrl)
+    return this.http.get(this.dataUrl, {}).publishReplay(1).refCount();
   }
 }

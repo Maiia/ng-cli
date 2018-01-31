@@ -10,7 +10,7 @@ import { ROUTER_SETTINGS } from './app.routes';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 // Application modules
-import * as fromSharedModules from './shared'
+import * as fromShared from './shared'
 
 // custom directives
 
@@ -52,7 +52,7 @@ import { ResetPasswordComponent } from './reset-password';
     NgbModule.forRoot(),
     ROUTER_SETTINGS,
     
-    ...fromSharedModules.modules,
+    ...fromShared.modules,
     
     // @ngrx
     StoreModule.forRoot(fromStore.reducers),

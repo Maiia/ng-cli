@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, HostBinding } from '@angular/core';
 import { Store  } from '@ngrx/store';
 import * as fromStore from '../store';
 import { Observable } from 'rxjs/Observable';
@@ -10,6 +10,7 @@ import { Observable } from 'rxjs/Observable';
 })
 
 export class ProductsComponent implements OnInit {
+  @HostBinding('attr.class') cssClass = 'Host-Binding-Test-Class'
   public products$: Observable<any>;
 
   constructor(
