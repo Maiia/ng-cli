@@ -3,6 +3,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { AppComponent } from './app.component';
 import { AuthService } from './services';
+import { Title } from '@angular/platform-browser';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -12,7 +13,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [ AppComponent ],
       schemas: [NO_ERRORS_SCHEMA],
-      providers:[AuthService],
+      providers:[AuthService, Title],
       imports:[HttpClientTestingModule]
     }).compileComponents();
   }));
@@ -27,5 +28,4 @@ describe('AppComponent', () => {
     expect(fixture).toBeDefined();
     expect(component).toBeDefined();
   });
-
 });
