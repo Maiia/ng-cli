@@ -9,8 +9,8 @@ import { Subscription } from 'rxjs/Subscription';
   styleUrls: ['./loading-indicator.component.scss']
 })
 export class LoadingIndicatorComponent implements OnInit {
-  loading: Boolean;
-  subscription: Subscription;
+  loading: Boolean = false;
+  subscription: Subscription = null;
 
   constructor(private LoadingService: LoadingService) {}
 

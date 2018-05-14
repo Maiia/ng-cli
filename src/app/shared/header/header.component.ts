@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Store  } from '@ngrx/store';
 import * as fromStore from '../../store';
-import { isUndefined } from 'lodash/isUndefined'
 
 // Annotation section
 @Component({
