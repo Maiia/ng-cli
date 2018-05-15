@@ -1,4 +1,4 @@
-import { useless } from './';
+import { useless } from './useless.pipe';
 
 describe('useless', () => {
   let pipe = new useless();

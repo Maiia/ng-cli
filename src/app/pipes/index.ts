@@ -1,2 +1,4 @@
-export { ReverseStrPipe } from './reverse-str.pipe';
-export { useless } from './useless.pipe';
+import { ReverseStrPipe } from './reverse-str.pipe';
+import { useless } from './useless.pipe';
+
+export const pipes: any[] = [ ReverseStrPipe, useless ]

@@ -1,4 +1,4 @@
-import { ReverseStrPipe } from './';
+import { ReverseStrPipe } from './reverse-str.pipe';
 
 describe('ReverseStrPipe', () => {
   let pipe = new ReverseStrPipe();

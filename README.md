@@ -8,3 +8,4 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Service GET - product.service.ts
 - Pipe - pipes folder
 - directives - directives folder
+- routing - app.routes.ts

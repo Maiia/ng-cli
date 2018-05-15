@@ -4,7 +4,7 @@ import { NgModule, ApplicationRef } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 
-import { ROUTER_SETTINGS } from './app.routes';
+import { appRoutes } from './app.routes';
 
 // external application modules
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -13,8 +13,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import * as fromShared from './shared'
 
 // custom directives
+import * as fromDirectives from './directives';
 
 // custom pipes
+import * as fromPipes from './pipes';
 
 // Application services
 import * as fromServices from './services';
@@ -34,9 +36,6 @@ import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password';
 
-import { ReverseStrPipe } from './pipes/reverse-str.pipe';
-import { useless } from './pipes/useless.pipe';
-
 @NgModule({
   declarations: [ 
     AppComponent,
@@ -45,7 +44,7 @@ import { useless } from './pipes/useless.pipe';
     ProductsComponent,
     LoginComponent,
     ResetPasswordComponent,
-    ReverseStrPipe
+    ...fromPipes.pipes
   ],
   imports: [
     BrowserModule,
@@ -54,7 +53,10 @@ import { useless } from './pipes/useless.pipe';
     FormsModule,
     ReactiveFormsModule,
     NgbModule.forRoot(),
-    ROUTER_SETTINGS,
+    RouterModule.forRoot(appRoutes, { 
+      useHash: Boolean(history.pushState) === false, 
+      // preloadingStrategy: PreloadAllModules 
+    }),
     
     ...fromShared.modules,
     
