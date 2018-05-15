@@ -1,10 +1,10 @@
 import { Location } from "@angular/common";
-import { TestBed } from '@angular/core/testing';
+import { TestBed, fakeAsync } from '@angular/core/testing';
 import { RouterTestingModule } from "@angular/router/testing";
 import { Router } from "@angular/router";
 import { ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { NO_ERRORS_SCHEMA } from "@angular/core";
+import { NO_ERRORS_SCHEMA, NgModuleFactoryLoader } from "@angular/core";
 import { HttpClientTestingModule } from "@angular/common/http/testing";
 
 import { AppComponent } from './app.component'
@@ -19,6 +19,7 @@ import * as fromStore from './store';
 
 import { AuthService } from './services';
 import { Title } from '@angular/platform-browser';
+import { ProfileModule } from './+profile/profile.module'
 
 describe('Router: App', () => {
   let location: Location;
@@ -76,11 +77,18 @@ describe('Router: App', () => {
     })
   });
 
-  it('navigate to "profile" takes you to /profile', () => {
+  it('navigate to "profile" takes you to /profile', fakeAsync(() => {  
+    const loader = TestBed.get(NgModuleFactoryLoader);
+    loader.stubbedModules = {lazyModule: ProfileModule};
+  
+    router.resetConfig([
+      {path: 'profile', loadChildren: 'lazyModule'},
+    ]);
+  
     router.navigate(['profile']).then(() => {
       expect(location.path()).toBe('/profile');
-    })
-  });
+    });
+  }));
 
   it('navigate to "products" takes you to /products', () => {
     router.navigate(['products']).then(() => {
