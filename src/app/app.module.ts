@@ -33,7 +33,9 @@ import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password';
-import { ReverseStrPipe } from './reverse-str.pipe';
+
+import { ReverseStrPipe } from './pipes/reverse-str.pipe';
+import { useless } from './pipes/useless.pipe';
 
 @NgModule({
   declarations: [ 

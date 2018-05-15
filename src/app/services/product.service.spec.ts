@@ -5,14 +5,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 describe('ProductsService:', () => {
     let service: ProductsService;
     let httpMock: HttpTestingController;
-    const productsData = { 
-        email:"Heath_Toy3@hotmail.com",
-        name:"Jamil Skiles",
-        phone:"548-827-9189",
-        username:"Elda.Gislason",
-        website:"israel.biz"
-    };
-    
+
     beforeEach(() => {
         TestBed.configureTestingModule({
           imports: [HttpClientTestingModule],
@@ -23,16 +16,27 @@ describe('ProductsService:', () => {
         httpMock = TestBed.get(HttpTestingController);
     });
 
+    afterEach(() => {
+        httpMock.verify();
+    })
+
     it('should get list of products', () => {
+        const productsData = { 
+            email:"Heath_Toy3@hotmail.com",
+            name:"Jamil Skiles",
+            phone:"548-827-9189",
+            username:"Elda.Gislason",
+            website:"israel.biz"
+        };
+
         service.getProducts().subscribe((data: any) => {
             expect(data).toBe(productsData);
+            expect(data.email).toBe('Heath_Toy3@hotmail.com');
         });
 
         const req = httpMock.expectOne(`http://localhost:3500/api`);
         expect(req.request.method).toBe('GET');
 
         req.flush(productsData);
-
-        httpMock.verify();
     });
 });

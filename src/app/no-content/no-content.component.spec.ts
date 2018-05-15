@@ -5,9 +5,9 @@ import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 
 describe('NoContentComponent: ', () => {
-  let headerElement: HTMLElement;
   let component: NoContentComponent;
   let fixture: ComponentFixture<NoContentComponent>;
+  let headerElement: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
