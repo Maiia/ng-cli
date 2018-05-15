@@ -4,8 +4,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Testing example
 
-- Component - footer.component.ts
-- Service GET - product.service.ts
-- Pipe - pipes folder
-- directives - directives folder
-- routing - app.routes.ts
+- Component - footer.component.spec.ts
+- Service GET - product.service.spec.ts
+- Pipe - .spec files inside pipes folder
+- directives - .spec files inside directives folder
+- routing - app.routes.spec.ts
