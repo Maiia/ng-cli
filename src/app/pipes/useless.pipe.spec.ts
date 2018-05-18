@@ -1,6 +1,6 @@
 import { useless } from './useless.pipe';
 
-describe('useless', () => {
+describe('Pipe: useless', () => {
   let pipe = new useless();
 
   it('create an instance of useless', () => {

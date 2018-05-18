@@ -1,6 +1,6 @@
 import { ReverseStrPipe } from './reverse-str.pipe';
 
-describe('ReverseStrPipe', () => {
+describe('Pipe: ReverseStrPipe', () => {
   let pipe = new ReverseStrPipe();
 
   it('create an instance of ReverseStrPipe', () => {

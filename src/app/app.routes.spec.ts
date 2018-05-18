@@ -59,6 +59,10 @@ describe('Router: App', () => {
     router.initialNavigation(); 
   })
 
+  it('should create router', () => {
+    expect(router).toBeTruthy();
+  });
+
   it('navigate to "404" takes you to /404', () => {
     router.navigate(['/404']).then(() => {
       expect(location.path()).toBe('/404');
@@ -79,11 +83,11 @@ describe('Router: App', () => {
 
   it('navigate to "profile" takes you to /profile', fakeAsync(() => {  
     const loader = TestBed.get(NgModuleFactoryLoader);
-    loader.stubbedModules = {lazyModule: ProfileModule};
+    loader.stubbedModules = { lazyModule: ProfileModule };
   
-    router.resetConfig([
-      {path: 'profile', loadChildren: 'lazyModule'},
-    ]);
+    router.resetConfig([{
+      path: 'profile', loadChildren: 'lazyModule' 
+    }]);
   
     router.navigate(['profile']).then(() => {
       expect(location.path()).toBe('/profile');

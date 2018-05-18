@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { AuthService } from './services';
 import { Title } from '@angular/platform-browser';
 
-describe('AppComponent', () => {
+describe('App: AppComponent', () => {
   let component: AppComponent;
   let fixture: ComponentFixture<AppComponent>;
 
@@ -22,6 +22,10 @@ describe('AppComponent', () => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
+  });
+
+  it('should create Application main Component', () => {
+    expect(component).toBeTruthy();
   });
 
   it(`should be readly initialized`, () => {
