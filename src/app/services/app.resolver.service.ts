@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Observable } from 'rxjs/Observable';
+import { Observable, of } from 'rxjs';
 
 // -----------------------------------------
 // Test Page Resolver
@@ -33,11 +33,9 @@ export class ProfileResolver implements Resolve<any>  {
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
     if (this.cachedData) {
-      return Observable.of(this.cachedData);
+      return of(this.cachedData);
     } else {
-      return this.http.get(this.dataUrl).do((data) => {
-        this.cachedData = data;
-      });
+      return this.http.get(this.dataUrl)
     }
   }
 }

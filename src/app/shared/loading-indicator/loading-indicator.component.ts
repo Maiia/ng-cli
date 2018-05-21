@@ -1,7 +1,6 @@
-import { Subject } from 'rxjs/Subject';
+import { Subject ,  Subscription } from 'rxjs';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { LoadingService } from './../../services';
-import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'app-loading-indicator',

@@ -2,12 +2,12 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { LoadingIndicatorComponent } from './loading-indicator.component';
 import { LoadingService } from './../../services';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
-import { Observable } from 'rxjs/Observable';
+import { from } from 'rxjs';
 import { createComponent } from '@angular/compiler/src/core';
 
 class LoadingServiceStub {
   getLoader() {
-    return Observable.from([{
+    return from([{
       'loading': true
     }]);
   }

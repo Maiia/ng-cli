@@ -17,9 +17,23 @@ import * as fromServices from './services';
 import { StoreModule } from '@ngrx/store';
 import * as fromStore from './store';
 
-import { AuthService } from './services';
 import { Title } from '@angular/platform-browser';
 import { ProfileModule } from './+profile/profile.module'
+import { AuthService } from "./services";
+
+export class MockAuthService {
+  checkLogin(): Boolean {
+    return true;
+  }
+
+  login(): Boolean {
+    return true;
+  }
+
+  logout(): void {
+    return;
+  }
+}
 
 describe('Router: App', () => {
   let location: Location;
@@ -42,8 +56,11 @@ describe('Router: App', () => {
         LoginComponent,
         NoContentComponent
       ],
-      providers:[ 
-        AuthService,
+      providers:[
+        {
+          provide: AuthService,
+          useClass: MockAuthService
+        },
         fromStore.ProductsGuard,
         ...fromServices.services
       ],

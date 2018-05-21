@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/operator/do';
+import { Observable, of } from 'rxjs';
+
+
 
 @Injectable()
 export class AuthService {
@@ -12,14 +12,14 @@ export class AuthService {
     this.isLoggedIn = true;
   }
 
-  checkLogin(){
+  checkLogin(): Boolean{
     return this.isLoggedIn;
   }
 
   login(email, password): Observable<boolean>{
     // if(email === 'admin@levi9.com' && password === "admin1"){
       this.isLoggedIn = true;
-      return Observable.of(true);
+      return of(true);
     // } else {
     //   this.isLoggedIn = false;
     // }

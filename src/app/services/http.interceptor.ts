@@ -1,7 +1,8 @@
 import { Injectable, Inject, forwardRef } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/operator/do';
+import { Observable, of } from 'rxjs';
+import { tap } from 'rxjs/operators'
+
 import { LoadingService } from './loading.service';
 
 import { Store  } from '@ngrx/store';
@@ -36,16 +37,18 @@ export class Interceptor implements HttpInterceptor {
     // First, check the cache to see if this request exists.
     if(this.cache != null) {
       this.LoadingService.hideLoading();
-      return Observable.of(this.cache);
+      return of(this.cache);
     }
 
     return next
       .handle(customReq)
-      .do((event: HttpEvent<any>) => {
-        this.onSuccess(event);
-      }, (error: any) => {
-        this.onError(error);
-      });
+      .pipe(
+        tap((event: HttpEvent<any>) => {
+          this.onSuccess(event);
+        }, (error: any) => {
+          this.onError(error);
+        })
+      );
   }
 
   // buildFullUrl(request){

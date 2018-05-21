@@ -1,31 +1,39 @@
-import 'rxjs/add/operator/do';
-import 'rxjs/add/operator/map';
+
+
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Location } from '@angular/common';
 import { Effect, Actions } from '@ngrx/effects';
 import * as RouterActions from '../actions';
+import { pipe } from 'rxjs';
+import { map, tap } from 'rxjs/operators';
 
 @Injectable()
 export class RouterEffects {
   @Effect({ dispatch: false })
   navigate$ = this.actions$.ofType(RouterActions.GO)
-    .map((action: RouterActions.Go) => action.payload)
-    .do(({ path, query: queryParams, extras}) => {
-      this.router.navigate(path, { queryParams, ...extras })
-    });
+    .pipe(
+      map((action: RouterActions.Go) => action.payload),
+      tap(({ path, query: queryParams, extras}) => {
+        this.router.navigate(path, { queryParams, ...extras })
+      })
+    );
 
   @Effect({ dispatch: false })
   navigateBack$ = this.actions$.ofType(RouterActions.BACK)
-    .do(() => {
-      this.location.back()
-    });
+    .pipe(
+      tap(() => {
+        this.location.back()
+      })
+    );
 
   @Effect({ dispatch: false })
   navigateForward$ = this.actions$.ofType(RouterActions.FORWARD)
-    .do(() => {
+  .pipe(
+    tap(() => {
       this.location.forward()
-    });
+    })
+  );
 
   constructor(
     private actions$: Actions,

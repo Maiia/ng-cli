@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { NgModule, ApplicationRef } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -8,6 +9,7 @@ import { appRoutes } from './app.routes';
 
 // external application modules
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { MaterialModule } from './material'
 
 // Application modules
 import * as fromShared from './shared'
@@ -47,24 +49,30 @@ import { ResetPasswordComponent } from './reset-password';
     ...fromPipes.pipes
   ],
   imports: [
+    // angular modules
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
-    
     FormsModule,
     ReactiveFormsModule,
-    NgbModule.forRoot(),
-    RouterModule.forRoot(appRoutes, { 
-      useHash: Boolean(history.pushState) === false, 
-      // preloadingStrategy: PreloadAllModules 
-    }),
     
+    // material module
+    MaterialModule,
+
+    NgbModule.forRoot(),
     ...fromShared.modules,
     
     // @ngrx
     StoreModule.forRoot(fromStore.reducers),
     StoreDevtoolsModule.instrument({ maxAge: 10 }),
     StoreRouterConnectingModule,
-    EffectsModule.forRoot(fromStore.effects)
+    EffectsModule.forRoot(fromStore.effects),
+
+    // app module
+    RouterModule.forRoot(appRoutes, { 
+      useHash: Boolean(history.pushState) === false, 
+      // preloadingStrategy: PreloadAllModules 
+    })
   ],
   
   // exports:[ ResetPasswordComponent ],
