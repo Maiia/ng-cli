@@ -1,26 +1,28 @@
 <ngb-alert [dismissible]="false" [type]="'success'">wefrawerawer</ngb-alert>
 
-  <ng-template #content let-c="close" let-d="dismiss">
-    <div class="modal-header">
-      <h4 class="modal-title">Modal title</h4>
-      <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
-        <span aria-hidden="true">&times;</span>
-      </button>
-    </div>
-    <div class="modal-body">
-      <p>One fine body&hellip;</p>
-    </div>
-    <div class="modal-footer">
-      <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
-    </div>
-  </ng-template>
+<button mat-button>Click me!</button>
 
-  <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
-  <hr />
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title">Modal title</h4>
+    <button type="button" class="close" aria-label="Close" (click)="d('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <p>One fine body&hellip;</p>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-outline-dark" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
 
-  <h1>Counter Redux</h1>
-  <button (click)="increment()">Increment</button>
-  <div>Current Count: {{ counter$ | async }}</div>
-  <button (click)="decrement()">Decrement</button>
+<button mat-raised-button (click)="open(content)">Launch demo modal</button>
+<hr />
 
-  <button (click)="reset()">Reset Counter</button>
+<h1>Counter Redux</h1>
+<button (click)="increment()">Increment</button>
+<div>Current Count: {{ counter$ | async }}</div>
+<button (click)="decrement()">Decrement</button>
+
+<button (click)="reset()">Reset Counter</button>
