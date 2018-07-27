@@ -28,15 +28,15 @@ describe('NoContentComponent: ', () => {
 
   it(`should be readly initialized and log some information`, () => {
     spyOn(console, 'log');
-    expect(console.log).not.toHaveBeenCalled()
+    expect(console.log).not.toHaveBeenCalled();
 
-    component.ngOnInit()
+    component.ngOnInit();
 
     expect(console.log).toHaveBeenCalled();
   });
 
   it(`should have title '404 Not Found'`, () => {
-    headerElement = <HTMLElement> fixture.nativeElement.querySelector("h1");
-    expect(headerElement.innerText).toContain('404 Not Found')
-  })
+    headerElement = <HTMLElement> fixture.nativeElement.querySelector('h1');
+    expect(headerElement.innerText).toContain('404 Not Found');
+  });
 });

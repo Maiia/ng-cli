@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 // Annotation section
 @Component({
-  selector: 'no-content',
+  selector: 'app-no-content',
   styleUrls: [ './no-content.component.scss' ],
   templateUrl: './no-content.component.html'
 })
