@@ -6,20 +6,20 @@ import * as fromStore from '../../store';
 @Component({
   selector: 'header',
   styleUrls: [ 'header.component.scss' ],
-  templateUrl: "header.component.html"
+  templateUrl: 'header.component.html'
 })
 
 // Component controller
 export class HeaderComponent implements OnInit {
   isActive: Boolean = false;
   error: Boolean;
-  
+
   constructor(
     private store: Store<fromStore.IAppState>
   ) {
     this.store.select('error').subscribe(data => {
-      if(data){
-        this.error = data['error'] ? true : false
+      if (data) {
+        this.error = data['error'] ? true : false;
       }
     });
   }
@@ -27,8 +27,8 @@ export class HeaderComponent implements OnInit {
   // -----------------------------------------
   // Component Lifecycle methods
   // -----------------------------------------
-  
-  ngOnInit(){
-      
+
+  ngOnInit() {
+
   }
 }

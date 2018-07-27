@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewChild  } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild  } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { ValidationService, AuthService } from '../services';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
@@ -16,15 +17,16 @@ export class LoginComponent implements OnInit {
   public loginForm: FormGroup;
   public resetForm: FormGroup;
   public validateStatus = true;
+  subscription: Subscription = null;
   closeResult: string;
   modalRef: any;
-  @ViewChild('myProfile') myProfile: ResetPasswordComponent
+  @ViewChild('myProfile') myProfile: ResetPasswordComponent;
 
   constructor(
     private modalService: NgbModal,
     public AuthService: AuthService,
     private router: Router,
-    private store: Store<fromStore.IAppState>    
+    private store: Store<fromStore.IAppState>
   ) { }
 
   // -----------------------------------------
@@ -45,7 +47,7 @@ export class LoginComponent implements OnInit {
   // -----------------------------------------
 
   onSubmit(form): void {
-    this.AuthService.login(form.email, form.password).subscribe((result) => {
+    this.subscription = this.AuthService.login(form.email, form.password).subscribe((result) => {
       if (result) {
         this.store.dispatch(new fromStore.Login({ 'email': form.email, 'password': form.password }));
         this.validateStatus = true;
@@ -56,12 +58,17 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  resetHandler(e){
+  resetHandler(e) {
     this.modalRef.close();
   }
 
   open(e, content) {
     e.preventDefault();
     this.modalRef = this.modalService.open(content);
+  }
+
+  OnDestroy() {
+    // unsubscribe to ensure no memory leaks
+    this.subscription.unsubscribe();
   }
 }

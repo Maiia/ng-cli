@@ -16,12 +16,12 @@ export class LoadingIndicatorComponent implements OnInit {
   // -----------------------------------------
   // Component Lifecycle methods
   // -----------------------------------------
-  
-  ngOnInit(){
+
+  ngOnInit() {
     this.subscription = this.LoadingService.getLoader().subscribe(loadingSubject => { this.loading = loadingSubject.loading; });
   }
 
-  ngOnDestroy() {
+  OnDestroy() {
     // unsubscribe to ensure no memory leaks
     this.subscription.unsubscribe();
   }
