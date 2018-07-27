@@ -1,7 +1,7 @@
 import { Injectable, Inject, forwardRef } from '@angular/core';
 import { HttpEvent, HttpInterceptor, HttpHandler, HttpRequest, HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { tap } from 'rxjs/operators'
+import { tap } from 'rxjs/operators';
 
 import { LoadingService } from './loading.service';
 
@@ -16,7 +16,7 @@ export class Interceptor implements HttpInterceptor {
     private LoadingService: LoadingService,
     private store: Store<fromStore.IAppState>
   ) {}
-  
+
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     this.LoadingService.showLoading();
 
@@ -35,7 +35,7 @@ export class Interceptor implements HttpInterceptor {
     });
 
     // First, check the cache to see if this request exists.
-    if(this.cache != null) {
+    if (this.cache != null) {
       this.LoadingService.hideLoading();
       return of(this.cache);
     }
@@ -59,7 +59,7 @@ export class Interceptor implements HttpInterceptor {
   // Callbacks
   // -----------------------------------------
 
-  onSuccess(event){
+  onSuccess(event) {
     if (event instanceof HttpResponse) {
       // No cached response exists. Go to the network, and cache the response when it arrives.
       // Intercepting HTTP responses
@@ -68,7 +68,7 @@ export class Interceptor implements HttpInterceptor {
     }
   }
 
-  onError(error){
+  onError(error) {
     this.LoadingService.hideLoading();
     // this.store.dispatch(new TriggerError(error));
     if (error instanceof HttpErrorResponse) {

@@ -13,4 +13,4 @@ import { AuthGuard } from './auth-guard.service';
 import { ValidationService } from './validation.service';
 import { ProductsService } from './product.service';
 
-export const services: any[] = [ LoadingService, ...APP_RESOLVER_PROVIDERS, AuthGuard, AuthService, ValidationService, ProductsService ]
+export const services: any[] = [ LoadingService, ...APP_RESOLVER_PROVIDERS, AuthGuard, AuthService, ValidationService, ProductsService ];

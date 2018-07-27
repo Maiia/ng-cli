@@ -8,14 +8,14 @@ import { Observable, of } from 'rxjs';
 // -----------------------------------------
 
 @Injectable()
-export class testResolver implements Resolve<any>  {
-  public dataUrl: string = "https://swapi.co/api/people/";
+export class TestResolver implements Resolve<any>  {
+  public dataUrl = 'https://swapi.co/api/people/';
 
-  constructor( public http: HttpClient ){
+  constructor( public http: HttpClient ) {
     this.http = http;
   }
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     return this.http.get(this.dataUrl);
   }
 }
@@ -26,18 +26,18 @@ export class testResolver implements Resolve<any>  {
 
 @Injectable()
 export class ProfileResolver implements Resolve<any>  {
-  public dataUrl: string = "https://swapi.co/api/people/";
+  public dataUrl = 'https://swapi.co/api/people/';
   cachedData: Object;
 
-  constructor( public http: HttpClient ){}
+  constructor( public http: HttpClient ) {}
 
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot){
+  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     if (this.cachedData) {
       return of(this.cachedData);
     } else {
-      return this.http.get(this.dataUrl)
+      return this.http.get(this.dataUrl);
     }
   }
 }
 
-export const APP_RESOLVER_PROVIDERS = [ ProfileResolver, testResolver ];
+export const APP_RESOLVER_PROVIDERS = [ ProfileResolver, TestResolver ];

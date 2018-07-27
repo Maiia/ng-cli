@@ -9,10 +9,10 @@ import { appRoutes } from './app.routes';
 
 // external application modules
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { MaterialModule } from './material'
+import { MaterialModule } from './+material';
 
 // Application modules
-import * as fromShared from './shared'
+import * as fromShared from './shared';
 
 // custom directives
 import * as fromDirectives from './directives';
@@ -39,7 +39,7 @@ import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password';
 
 @NgModule({
-  declarations: [ 
+  declarations: [
     AppComponent,
     NoContentComponent,
     HomeComponent,
@@ -55,13 +55,13 @@ import { ResetPasswordComponent } from './reset-password';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    
+
     // material module
     MaterialModule,
 
     NgbModule.forRoot(),
     ...fromShared.modules,
-    
+
     // @ngrx
     StoreModule.forRoot(fromStore.reducers),
     StoreDevtoolsModule.instrument({ maxAge: 10 }),
@@ -69,12 +69,12 @@ import { ResetPasswordComponent } from './reset-password';
     EffectsModule.forRoot(fromStore.effects),
 
     // app module
-    RouterModule.forRoot(appRoutes, { 
-      useHash: Boolean(history.pushState) === false, 
-      // preloadingStrategy: PreloadAllModules 
+    RouterModule.forRoot(appRoutes, {
+      useHash: Boolean(history.pushState) === false,
+      // preloadingStrategy: PreloadAllModules
     })
   ],
-  
+
   // exports:[ ResetPasswordComponent ],
   providers: [
     FormBuilder,
@@ -86,8 +86,8 @@ import { ResetPasswordComponent } from './reset-password';
   bootstrap: [ AppComponent ]
 })
 
-export class AppModule { 
+export class AppModule {
   constructor(
     public appRef: ApplicationRef
-  ){}
+  ) {}
 }

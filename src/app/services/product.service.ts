@@ -5,12 +5,12 @@ import { publishReplay, refCount } from 'rxjs/operators';
 
 @Injectable()
 export class ProductsService {
-  public dataUrl: string = "http://localhost:3500/api";
-  public dataUrlError: string = "http://localhost:3500/error";
+  public dataUrl = 'http://localhost:3500/api';
+  public dataUrlError = 'http://localhost:3500/error';
 
-  constructor( private http: HttpClient ){}
+  constructor( private http: HttpClient ) {}
 
-  getProducts(){
+  getProducts() {
     return this.http.get(this.dataUrl, {})
       .pipe(
         publishReplay(1),

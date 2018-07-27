@@ -9,8 +9,8 @@ import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 export const profileRouting = [
-    { path: '', 
-      component: ProfileComponent, 
+    { path: '',
+      component: ProfileComponent,
       resolve: {
         results: ProfileResolver
       },
@@ -27,6 +27,6 @@ export const profileRouting = [
     RouterModule.forChild(profileRouting),
   ],
   declarations: [ ProfileComponent ],
-  providers:[FormBuilder]
+  providers: [FormBuilder]
 })
 export class ProfileModule { }

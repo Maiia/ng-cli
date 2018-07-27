@@ -3,7 +3,8 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ValidationService {
   static getValidatorErrorMessage(validatorName: string, validatorValue?: any) {
-    let config = {
+
+    const config = {
       'required': 'This field cannot be left blank',
       'invalidEmailAddress': 'Invalid email address',
       'invalidPassword': 'Invalid password. Password must be at least 6 characters long, and contain a number.',
@@ -14,8 +15,10 @@ export class ValidationService {
   }
 
   static emailValidator(control) {
+    // tslint:disable-next-line
+    const regexp = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/;
     // RFC 2822 compliant regex
-    if (control.value.match(/[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/)) {
+    if (control.value.match(regexp)) {
       return null;
     } else {
       return { 'invalidEmailAddress': true };
