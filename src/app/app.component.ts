@@ -2,6 +2,7 @@ import { Component, AfterViewInit, HostListener, Inject, Input, OnInit } from '@
 import { Title } from '@angular/platform-browser';
 import { VERSION } from '@angular/core';
 import { AuthService } from './services';
+import { difference } from 'lodash';
 
 @Component({
   selector: 'app-root',
@@ -10,15 +11,16 @@ import { AuthService } from './services';
 })
 
 export class AppComponent implements OnInit {
-  infoLogStyle: string = 'color: orange; font-size: 12px;';
+  infoLogStyle = 'color: orange; font-size: 12px;';
   isLoggedIn: Boolean = false;
 
   constructor(
     public AuthService: AuthService,
     private titleService: Title
-  ){
+  ) {
     console.log('%cAngular version: ' + VERSION.full, this.infoLogStyle);
-    this.titleService.setTitle('App Component!')
+    this.titleService.setTitle('App Component!');
+    console.log(difference([2, 1], [2, 3]));
   }
 
   // -----------------------------------------
@@ -26,35 +28,35 @@ export class AppComponent implements OnInit {
   // -----------------------------------------
 
   ngOnInit() {
-    // console.log ("Called after the constructor, initializing input properties, and the first call to ngOnChanges");
+    // console.log ('Called after the constructor, initializing input properties, and the first call to ngOnChanges');
   }
 
-  ngOnChanges() {
-    // console.log ("Called after every change to input properties and before processing content or child views");
+  OnChanges() {
+    // console.log ('Called after every change to input properties and before processing content or child views');
   }
 
-  ngDoCheck() {
-    //console.log ("Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.");
+  DoCheck() {
+    //console.log ('Called every time that the input properties of a component or a directive are checked. Use it to extend change detection by performing a custom check.');
   }
 
-  ngAfterContentInit() {
-    //console.log ("Called after ngOnInit when the component's or directive's content has been initialized");
+  AfterContentInit() {
+    //console.log ('Called after ngOnInit when the component\'s or directive's content has been initialized');
   }
 
-  ngAfterContentChecked() {
+  AfterContentChecked() {
     this.isLoggedIn = this.AuthService.checkLogin();
-    //console.log ("Called after ngAfterContentInit and very subsequent ngDoCheck()");
+    //console.log ('Called after ngAfterContentInit and very subsequent ngDoCheck()');
   }
 
-  ngAfterViewInit() {
-    //console.log ("Called after ngAfterContentInit when the component's view has been initialized. Applies to components only");
+  AfterViewInit() {
+    //console.log ('Called after ngAfterContentInit when the component\'s view has been initialized. Applies to components only');
   }
 
-  ngAfterViewChecked() {
-    //console.log ("Called after every check of the component's view. Applies to components only.");
+  AfterViewChecked() {
+    //console.log ('Called after every check of the component\'s view. Applies to components only.');
   }
 
-  ngOnDestroy() {
-    //console.log ("Called once, before the instance is destroyed");
+  OnDestroy() {
+    // console.log ('Called once, before the instance is destroyed');
   }
 }

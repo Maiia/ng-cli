@@ -17,7 +17,7 @@ export class UnderlineDirective {
     // for input params
     // @Input() my: boolean;
     constructor(
-        private el: ElementRef, 
+        private el: ElementRef,
         private renderer: Renderer
     ) {}
 
@@ -25,16 +25,16 @@ export class UnderlineDirective {
     @HostBinding('style.backgroundColor') color = "yellow";
 
     // HostListener - will listen to the event emitted by host element, declared with @HostListener.
-    @HostListener('mouseenter') onMouseEnter(){
+    @HostListener('mouseenter') onMouseEnter() {
         this.hover(true);
     }
 
-    @HostListener('mouseleave') onMouseLeave(){
+    @HostListener('mouseleave') onMouseLeave() {
         this.hover(false);
     }
 
-    hover(shouldUnderline: boolean){
-        if(shouldUnderline){
+    hover(shouldUnderline: boolean) {
+        if (shouldUnderline) {
             this.renderer.setElementStyle(this.el.nativeElement, 'text-decoration', 'underline');
         } else {
             this.renderer.setElementStyle(this.el.nativeElement, 'text-decoration', 'none');

@@ -1,7 +1,7 @@
 import { Routes } from '@angular/router';
 import { AuthGuard } from './services';
 
-import * as fromStore from './store'
+import * as fromStore from './store';
 
 import { HomeComponent } from './home';
 import { ProductsComponent } from './products';
