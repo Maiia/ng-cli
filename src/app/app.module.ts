@@ -1,9 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
-import { NgModule, ApplicationRef } from '@angular/core';
+import { NgModule, ApplicationRef, Injector } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { createCustomElement } from '@angular/elements';
 
 import { appRoutes } from './app.routes';
 
@@ -15,7 +16,7 @@ import { MaterialModule } from './+material';
 import * as fromShared from './shared';
 
 // custom directives
-import * as fromDirectives from './directives';
+import { UnderlineDirective } from './directives';
 
 // custom pipes
 import * as fromPipes from './pipes';
@@ -37,6 +38,7 @@ import { HomeComponent } from './home/home.component';
 import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password';
+import { MyElementsComponent } from './elements/elements.component';
 
 @NgModule({
   declarations: [
@@ -45,8 +47,10 @@ import { ResetPasswordComponent } from './reset-password';
     HomeComponent,
     ProductsComponent,
     LoginComponent,
+    MyElementsComponent,
     ResetPasswordComponent,
-    ...fromPipes.pipes
+    ...fromPipes.pipes,
+    UnderlineDirective
   ],
   imports: [
     // angular modules
@@ -83,11 +87,16 @@ import { ResetPasswordComponent } from './reset-password';
     ...fromServices.services,
     ...fromStore.guards
   ],
-  bootstrap: [ AppComponent ]
+  bootstrap: [ AppComponent ],
+  entryComponents: [ MyElementsComponent ]
 })
 
 export class AppModule {
   constructor(
-    public appRef: ApplicationRef
-  ) {}
+    public appRef: ApplicationRef,
+    private injector: Injector
+  ) {
+    const customElement = createCustomElement(MyElementsComponent, { injector });
+    customElements.define('app-elements', customElement);
+  }
 }

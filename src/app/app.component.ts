@@ -1,5 +1,5 @@
-import { Component, AfterViewInit, HostListener, Inject, Input, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Component, AfterViewInit, HostListener, Inject, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Title, DomSanitizer } from '@angular/platform-browser';
 import { VERSION } from '@angular/core';
 import { AuthService } from './services';
 import { difference } from 'lodash';
@@ -8,19 +8,26 @@ import { difference } from 'lodash';
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
+  // encapsulation: ViewEncapsulation.None
 })
 
 export class AppComponent implements OnInit {
   infoLogStyle = 'color: orange; font-size: 12px;';
   isLoggedIn: Boolean = false;
+  content = null;
 
   constructor(
     public AuthService: AuthService,
-    private titleService: Title
+    private titleService: Title,
+    domSanitizer: DomSanitizer
   ) {
     console.log('%cAngular version: ' + VERSION.full, this.infoLogStyle);
     this.titleService.setTitle('App Component!');
-    console.log(difference([2, 1], [2, 3]));
+    // console.log(difference([2, 1], [2, 3]));
+
+    setTimeout(() => { 
+      this.content = domSanitizer.bypassSecurityTrustHtml("<app-elements name='custom'></app-elements>");
+    }, 1000)
   }
 
   // -----------------------------------------

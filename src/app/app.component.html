@@ -1,7 +1,10 @@
-<header *ngIf="isLoggedIn"></header>
+<header></header>
 
 <div class="container pt-3">
   <router-outlet></router-outlet>
+  
+  <!-- test angular elements -->
+  <div [innerHTML]="content"></div>
 </div>
 
 <footer *ngIf="isLoggedIn" class="footer"></footer>
