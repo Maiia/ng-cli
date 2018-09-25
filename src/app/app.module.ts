@@ -1,10 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { FormsModule, FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, FormBuilder, ReactiveFormsModule, ValidationErrors } from '@angular/forms';
 import { NgModule, ApplicationRef, Injector } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { createCustomElement } from '@angular/elements';
+import { FormControl } from '@angular/forms';
 
 import { appRoutes } from './app.routes';
 
@@ -12,7 +13,7 @@ import { appRoutes } from './app.routes';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from './+material';
 
-import { FormlyModule } from '@ngx-formly/core';
+import { FormlyModule, FormlyFieldConfig } from '@ngx-formly/core';
 import {FormlyMaterialModule} from '@ngx-formly/material';
 
 // Application modules
@@ -42,7 +43,16 @@ import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password';
 import { MyElementsComponent } from './elements/elements.component';
-import { FormlyComponent } from './formly/formly.component';
+import { FormlyComponent } from './formly';
+import { CustomFormlyComponent } from './formly-custom/custom-formly.component';
+
+export function FirstNameValidator(control: FormControl): ValidationErrors {
+  return control.value && control.value.length < 3 ? { 'first_name': true } : null;
+}
+
+export function FirstNameValidatorMessage(err, field: FormlyFieldConfig) {
+  return `"${field.formControl.value}" length is less that required`;
+}
 
 @NgModule({
    declarations: [
@@ -54,6 +64,7 @@ import { FormlyComponent } from './formly/formly.component';
       MyElementsComponent,
       ResetPasswordComponent,
       FormlyComponent,
+      CustomFormlyComponent,
       ...fromPipes.pipes,
       UnderlineDirective,
    ],
@@ -65,7 +76,17 @@ import { FormlyComponent } from './formly/formly.component';
     FormsModule,
     ReactiveFormsModule,
 
-    FormlyModule.forRoot(),
+    FormlyModule.forRoot({
+      types: [
+        { name: 'custom', component: CustomFormlyComponent },
+      ],
+      validators: [ 
+        { name: 'first_name', validation: FirstNameValidator },
+      ],
+      validationMessages: [
+        { name: 'first_name', message: FirstNameValidatorMessage },
+      ],
+    }),
     FormlyMaterialModule,
 
     // material module
