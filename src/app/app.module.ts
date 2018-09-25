@@ -12,6 +12,9 @@ import { appRoutes } from './app.routes';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from './+material';
 
+import { FormlyModule } from '@ngx-formly/core';
+import {FormlyMaterialModule} from '@ngx-formly/material';
+
 // Application modules
 import * as fromShared from './shared';
 
@@ -61,6 +64,9 @@ import { FormlyComponent } from './formly/formly.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+
+    FormlyModule.forRoot(),
+    FormlyMaterialModule,
 
     // material module
     MaterialModule,
