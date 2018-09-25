@@ -25,9 +25,9 @@ export class AppComponent implements OnInit {
     this.titleService.setTitle('App Component!');
     // console.log(difference([2, 1], [2, 3]));
 
-    setTimeout(() => { 
-      this.content = domSanitizer.bypassSecurityTrustHtml("<app-elements name='custom'></app-elements>");
-    }, 1000)
+    // setTimeout(() => { 
+    //   this.content = domSanitizer.bypassSecurityTrustHtml("<app-elements name='custom'></app-elements>");
+    // }, 1000)
   }
 
   // -----------------------------------------

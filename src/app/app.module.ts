@@ -39,20 +39,22 @@ import { ProductsComponent } from './products/products.component';
 import { LoginComponent } from './login/login.component';
 import { ResetPasswordComponent } from './reset-password';
 import { MyElementsComponent } from './elements/elements.component';
+import { FormlyComponent } from './formly/formly.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    NoContentComponent,
-    HomeComponent,
-    ProductsComponent,
-    LoginComponent,
-    MyElementsComponent,
-    ResetPasswordComponent,
-    ...fromPipes.pipes,
-    UnderlineDirective
-  ],
-  imports: [
+   declarations: [
+      AppComponent,
+      NoContentComponent,
+      HomeComponent,
+      ProductsComponent,
+      LoginComponent,
+      MyElementsComponent,
+      ResetPasswordComponent,
+      FormlyComponent,
+      ...fromPipes.pipes,
+      UnderlineDirective,
+   ],
+   imports: [
     // angular modules
     BrowserModule,
     BrowserAnimationsModule,
@@ -78,7 +80,6 @@ import { MyElementsComponent } from './elements/elements.component';
       // preloadingStrategy: PreloadAllModules
     })
   ],
-
   // exports:[ ResetPasswordComponent ],
   providers: [
     FormBuilder,
