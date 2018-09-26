@@ -14,7 +14,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { MaterialModule } from './+material';
 
 import { FormlyModule, FormlyFieldConfig } from '@ngx-formly/core';
-import {FormlyMaterialModule} from '@ngx-formly/material';
+import { FormlyMaterialModule } from '@ngx-formly/material';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 // Application modules
 import * as fromShared from './shared';
@@ -45,6 +46,7 @@ import { ResetPasswordComponent } from './reset-password';
 import { MyElementsComponent } from './elements/elements.component';
 import { FormlyComponent } from './formly';
 import { CustomFormlyComponent } from './formly-custom/custom-formly.component';
+import { ngxChartComponent } from './ngx-chart';
 
 export function FirstNameValidator(control: FormControl): ValidationErrors {
   return control.value && control.value.length < 3 ? { 'first_name': true } : null;
@@ -64,6 +66,7 @@ export function FirstNameValidatorMessage(err, field: FormlyFieldConfig) {
       MyElementsComponent,
       ResetPasswordComponent,
       FormlyComponent,
+      ngxChartComponent,
       CustomFormlyComponent,
       ...fromPipes.pipes,
       UnderlineDirective,
@@ -88,6 +91,7 @@ export function FirstNameValidatorMessage(err, field: FormlyFieldConfig) {
       ],
     }),
     FormlyMaterialModule,
+    NgxChartsModule,
 
     // material module
     MaterialModule,
