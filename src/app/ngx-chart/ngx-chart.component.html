@@ -2,7 +2,6 @@
   <h1>ngx-charts test</h1>
 
   <ngx-charts-bar-vertical
-    [view]="view"
     [scheme]="colorScheme"
     [results]="single"
     [gradient]="gradient"
@@ -14,5 +13,13 @@
     [xAxisLabel]="xAxisLabel"
     [yAxisLabel]="yAxisLabel"
     (select)="onSelect($event)">
+
+    <ng-template #tooltipTemplate let-model="model">
+      <h1>
+        tooltip
+      </h1>
+      <h2>{{model.name}}</h2>
+    </ng-template>
+
   </ngx-charts-bar-vertical>
 </div>

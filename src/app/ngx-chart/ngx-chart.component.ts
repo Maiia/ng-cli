@@ -24,7 +24,7 @@ export class ngxChartComponent implements OnInit {
 
   multi: any[];
 
-  view: any[] = [700, 400];
+  fitContainer: true
 
   // options
   showXAxis = true;
@@ -40,9 +40,7 @@ export class ngxChartComponent implements OnInit {
     domain: ['#5AA454', '#A10A28', '#C7B42C', '#AAAAAA']
   };
 
-  constructor() {
-    Object.assign(this, this.single )
-  }
+  constructor() { }
 
   ngOnInit() {
     
