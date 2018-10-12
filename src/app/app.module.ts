@@ -6,6 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { createCustomElement } from '@angular/elements';
 import { FormControl } from '@angular/forms';
+import { LayoutModule } from '@angular/cdk/layout';
 
 import { appRoutes } from './app.routes';
 
@@ -47,6 +48,7 @@ import { MyElementsComponent } from './elements/elements.component';
 import { FormlyComponent } from './formly';
 import { CustomFormlyComponent } from './formly-custom/custom-formly.component';
 import { ngxChartComponent } from './ngx-chart';
+import { MediaLayoutComponent } from './media-layout/media-layout.component';
 
 export function FirstNameValidator(control: FormControl): ValidationErrors {
   return control.value && control.value.length < 3 ? { 'first_name': true } : null;
@@ -70,6 +72,7 @@ export function FirstNameValidatorMessage(err, field: FormlyFieldConfig) {
       CustomFormlyComponent,
       ...fromPipes.pipes,
       UnderlineDirective,
+      MediaLayoutComponent,
    ],
    imports: [
     // angular modules
@@ -78,7 +81,7 @@ export function FirstNameValidatorMessage(err, field: FormlyFieldConfig) {
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-
+    LayoutModule,
     FormlyModule.forRoot({
       types: [
         { name: 'custom', component: CustomFormlyComponent },
