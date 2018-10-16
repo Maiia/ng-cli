@@ -49,6 +49,7 @@ import { FormlyComponent } from './formly';
 import { CustomFormlyComponent } from './formly-custom/custom-formly.component';
 import { ngxChartComponent } from './ngx-chart';
 import { MediaLayoutComponent } from './media-layout/media-layout.component';
+import { ReactiveFormComponent } from './reactive-form/reactive-form.component';
 
 export function FirstNameValidator(control: FormControl): ValidationErrors {
   return control.value && control.value.length < 3 ? { 'first_name': true } : null;
@@ -73,6 +74,7 @@ export function FirstNameValidatorMessage(err, field: FormlyFieldConfig) {
       ...fromPipes.pipes,
       UnderlineDirective,
       MediaLayoutComponent,
+      ReactiveFormComponent,
    ],
    imports: [
     // angular modules
