@@ -11,6 +11,10 @@ export class ReactiveFormComponent implements OnInit {
 
   constructor() {}
 
+  get sections() {
+    return this.form.controls.sections['controls'];
+  }
+
   ngOnInit() {
     this.form = new FormGroup({
       sections: new FormArray([
@@ -24,11 +28,7 @@ export class ReactiveFormComponent implements OnInit {
       title: new FormControl(''),
       description: new FormControl(''),
     })
-  }
-
-  getSections(form) {
-    return form.controls.sections.controls;
-  }
+  }  
 
   addSection(){
     const control = <FormArray>this.form.get('sections');
