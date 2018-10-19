@@ -17,6 +17,7 @@ export class ReactiveFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = new FormGroup({
+      firstName: new FormControl(''),
       sections: new FormArray([
         this.initSection()
       ]),

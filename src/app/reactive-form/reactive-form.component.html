@@ -1,10 +1,12 @@
 <form [formGroup]="form" (ngSubmit)="onSubmit(form)">
+  <input type="text" placeholder="First Name" formControlName="firstName">
+
   <div formArrayName="sections">
-      <h4>Section Details</h4>
+      <h6>Section Details</h6>
       <div class="section-container" *ngFor="let section of sections; let i = index">
         <div class="ui raised segments" [formGroupName]="i">
-          <input type="text" placeholder="Untitled form" formControlName="title">
-          <input type="text" placeholder="Form Description" formControlName="description">
+          <input type="text" placeholder="Title" formControlName="title">
+          <input type="text" placeholder="Description" formControlName="description">
         </div>
       </div>
   </div>

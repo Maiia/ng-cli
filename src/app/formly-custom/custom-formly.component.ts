@@ -8,7 +8,7 @@ import { FieldType } from '@ngx-formly/core';
 })
 
 export class CustomFormlyComponent extends FieldType implements OnInit {
-  OnInit(){
+  ngOnInit(){
     console.log("init xustom component");
   }
 }
